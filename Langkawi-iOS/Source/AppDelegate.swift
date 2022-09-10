@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Langkawi-iOS
 //
-//  Created by Yuki Matsuo on 2022/09/10.
+//  Created by Yuki Matsuo on 2022/08/30.
 //
 
 import UIKit
@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        SwinjectManager.shared.initialize()
         return true
     }
 
