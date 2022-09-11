@@ -15,51 +15,107 @@ class BaseAPI: SwinjectSupport {
     
     private lazy var globalExceptionHandler = resolveInstance(GlobalExceptionHandler.self)
     
-    func request<T: Decodable>(
-        vc: UIViewController,
+    func getRequest<T: Decodable>(
         path: String,
         model: T.Type,
-        method: HTTPMethod = .get,
         parameters: Parameters? = nil,
+        interceptor: RequestInterceptor? = AuthorizationAdaptor.shared
+    ) -> AnyPublisher<T, Error> {
+        return request(
+            path: path,
+            model: model,
+            method: .get,
+            parameters: parameters,
+            encoding: URLEncoding.default,
+            interceptor: interceptor
+        )
+    }
+    
+    func postRequest<T: Decodable>(
+        path: String,
+        model: T.Type,
+        parameters: Parameters? = nil,
+        interceptor: RequestInterceptor? = AuthorizationAdaptor.shared
+    ) -> AnyPublisher<T, Error> {
+        return request(
+            path: path,
+            model: model,
+            method: .post,
+            parameters: parameters,
+            encoding: JSONEncoding.default,
+            interceptor: interceptor
+        )
+    }
+    
+    func putRequest<T: Decodable>(
+        path: String,
+        model: T.Type,
+        parameters: Parameters? = nil,
+        interceptor: RequestInterceptor? = AuthorizationAdaptor.shared
+    ) -> AnyPublisher<T, Error> {
+        return request(
+            path: path,
+            model: model,
+            method: .put,
+            parameters: parameters,
+            encoding: JSONEncoding.default,
+            interceptor: interceptor
+        )
+    }
+    
+    func deleteRequest<T: Decodable>(
+        path: String,
+        model: T.Type,
+        parameters: Parameters? = nil,
+        interceptor: RequestInterceptor? = AuthorizationAdaptor.shared
+    ) -> AnyPublisher<T, Error> {
+        return request(
+            path: path,
+            model: model,
+            method: .delete,
+            parameters: parameters,
+            encoding: JSONEncoding.default,
+            interceptor: interceptor
+        )
+    }
+    
+    private func request<T: Decodable>(
+        path: String,
+        model: T.Type,
+        method: HTTPMethod,
+        parameters: Parameters?,
+        encoding: ParameterEncoding,
         headers: HTTPHeaders? = nil,
-        errorHandler: ((Error) -> Bool)? = nil,
-        responseHandler: @escaping (T) -> Void
-    ) -> AnyCancellable {
-        return AF.request("\(apiPath)\(path)", method: method, parameters: parameters, headers: headers).publishData()
-            .map { (dr: DataResponse<Data, AFError>) -> Result<T, Error> in
+        interceptor: RequestInterceptor? = nil
+    ) -> AnyPublisher<T, Error> {
+        return AF.request(
+            "\(apiPath)\(path)",
+            method: method, parameters: parameters, encoding: encoding, headers: headers, interceptor: interceptor
+        ).publishData()
+            .tryMap { (dr: DataResponse<Data, AFError>) -> T in
                 switch dr.result {
                 case .success(let data):
                     guard let status = dr.response?.statusCode else {
-                        return .failure(AFError.responseSerializationFailed(reason: .invalidEmptyResponse(type: "empty")))
+                        throw AFError.responseSerializationFailed(reason: .invalidEmptyResponse(type: "empty"))
                     }
                     
+                    let decoder = JSONDecoder()
                     do {
-                        let decoder = JSONDecoder()
                         if status == 200 {
-                            return .success(try decoder.decode(model, from: data))
+                            return try decoder.decode(model, from: data)
                         } else {
                             let resp = try decoder.decode(ErrorResponse.self, from: data)
-                            return .failure(APIStatusError(status: status, response: resp))
+                            throw APIStatusError(status: status, response: resp)
                         }
                     } catch {
-                        return .failure(AFError.responseSerializationFailed(reason: .decodingFailed(error: error)))
+                        if let error = error as? APIStatusError {
+                            throw error
+                        }
+                        throw AFError.responseSerializationFailed(reason: .decodingFailed(error: error))
                     }
                 case .failure(let error):
-                    return .failure(error)
+                    throw error
                 }
-            }.sink { [weak self, weak vc] in
-                switch $0 {
-                case .success(let response):
-                    responseHandler(response)
-                case .failure(let error):
-                    var cont = true
-                    if let errorHandler = errorHandler {
-                        cont = errorHandler(error)
-                    }
-                    if cont {
-                        self?.globalExceptionHandler.handle(error: error, vc: vc)
-                    }
-                }
-            }
+            }.eraseToAnyPublisher()
     }
 }

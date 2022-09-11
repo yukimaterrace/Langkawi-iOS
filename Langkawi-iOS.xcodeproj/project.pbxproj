@@ -33,6 +33,12 @@
 		CBE832A428CC38F500D8E953 /* Font Awesome 6 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = CBE832A028CC38F500D8E953 /* Font Awesome 6 Free-Solid-900.otf */; };
 		CBE832A528CC38F500D8E953 /* Font Awesome 6 Free-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = CBE832A128CC38F500D8E953 /* Font Awesome 6 Free-Regular-400.otf */; };
 		CBE832A628CC38F500D8E953 /* Font Awesome 6 Brands-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = CBE832A228CC38F500D8E953 /* Font Awesome 6 Brands-Regular-400.otf */; };
+		CBE832B528CC86F600D8E953 /* DBKeyValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832B428CC86F600D8E953 /* DBKeyValue.swift */; };
+		CBE832B728CC8CDA00D8E953 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832B628CC8CDA00D8E953 /* LoginAPI.swift */; };
+		CBE832B928CD78C500D8E953 /* RequestAdaptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832B828CD78C500D8E953 /* RequestAdaptors.swift */; };
+		CBE832BB28CDA64900D8E953 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832BA28CDA64900D8E953 /* LoginResponse.swift */; };
+		CBE832BD28CDA88400D8E953 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832BC28CDA88400D8E953 /* LoginViewModel.swift */; };
+		CBE832BF28CDAD1C00D8E953 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832BE28CDAD1C00D8E953 /* APIHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +91,20 @@
 			remoteGlobalIDString = 8ACA110EF3B35B3FCC08297B3799D9AD;
 			remoteInfo = Swinject;
 		};
+		CBE832B028CC86D300D8E953 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBE8325F28CC31D900D8E953 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 921BE4A82C4A7A5C72A0C6F8B8FEF200;
+			remoteInfo = Realm;
+		};
+		CBE832B228CC86D300D8E953 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBE8325F28CC31D900D8E953 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 437919EE08EC6BFCCBAC3BD346309742;
+			remoteInfo = RealmSwift;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +144,12 @@
 		CBE832A028CC38F500D8E953 /* Font Awesome 6 Free-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 6 Free-Solid-900.otf"; sourceTree = "<group>"; };
 		CBE832A128CC38F500D8E953 /* Font Awesome 6 Free-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 6 Free-Regular-400.otf"; sourceTree = "<group>"; };
 		CBE832A228CC38F500D8E953 /* Font Awesome 6 Brands-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 6 Brands-Regular-400.otf"; sourceTree = "<group>"; };
+		CBE832B428CC86F600D8E953 /* DBKeyValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBKeyValue.swift; sourceTree = "<group>"; };
+		CBE832B628CC8CDA00D8E953 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
+		CBE832B828CD78C500D8E953 /* RequestAdaptors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAdaptors.swift; sourceTree = "<group>"; };
+		CBE832BA28CDA64900D8E953 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		CBE832BC28CDA88400D8E953 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		CBE832BE28CDAD1C00D8E953 /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
 		EDE25603DB1C09BBAED28223 /* Pods-Langkawi-iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Langkawi-iOSTests.release.xcconfig"; path = "Target Support Files/Pods-Langkawi-iOSTests/Pods-Langkawi-iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -225,6 +251,8 @@
 				CBE8326A28CC31DA00D8E953 /* Pods-Langkawi-iOS */,
 				CBE8326C28CC31DA00D8E953 /* Pods-Langkawi-iOS-Langkawi-iOSUITests */,
 				CBE8326E28CC31DA00D8E953 /* Pods-Langkawi-iOSTests */,
+				CBE832B128CC86D300D8E953 /* Realm */,
+				CBE832B328CC86D300D8E953 /* RealmSwift */,
 				CBE8327028CC31DA00D8E953 /* Swinject */,
 			);
 			name = Products;
@@ -235,9 +263,9 @@
 			children = (
 				CBE8328828CC38BB00D8E953 /* AppDelegate.swift */,
 				CBE8328C28CC38BB00D8E953 /* SceneDelegate.swift */,
-				CBE8327928CC38BB00D8E953 /* LaunchScreen.storyboard */,
 				CBE8328628CC38BB00D8E953 /* API */,
 				CBE8328928CC38BB00D8E953 /* Error */,
+				CBE8327928CC38BB00D8E953 /* LaunchScreen.storyboard */,
 				CBE8327B28CC38BB00D8E953 /* Model */,
 				CBE8327428CC38BB00D8E953 /* Utils */,
 				CBE8327E28CC38BB00D8E953 /* View */,
@@ -259,7 +287,9 @@
 		CBE8327B28CC38BB00D8E953 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CBE832B428CC86F600D8E953 /* DBKeyValue.swift */,
 				CBE8327C28CC38BB00D8E953 /* ErrorResponse.swift */,
+				CBE832BA28CDA64900D8E953 /* LoginResponse.swift */,
 				CBE8327D28CC38BB00D8E953 /* SuccessResponse.swift */,
 			);
 			path = Model;
@@ -296,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				CBE8328528CC38BB00D8E953 /* LoginViewController.swift */,
+				CBE832BC28CDA88400D8E953 /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -304,6 +335,9 @@
 			isa = PBXGroup;
 			children = (
 				CBE8328728CC38BB00D8E953 /* BaseAPI.swift */,
+				CBE832B628CC8CDA00D8E953 /* LoginAPI.swift */,
+				CBE832B828CD78C500D8E953 /* RequestAdaptors.swift */,
+				CBE832BE28CDAD1C00D8E953 /* APIHandler.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -497,6 +531,22 @@
 			remoteRef = CBE8326F28CC31DA00D8E953 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		CBE832B128CC86D300D8E953 /* Realm */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			name = Realm;
+			path = Realm.framework;
+			remoteRef = CBE832B028CC86D300D8E953 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CBE832B328CC86D300D8E953 /* RealmSwift */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			name = RealmSwift;
+			path = RealmSwift.framework;
+			remoteRef = CBE832B228CC86D300D8E953 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -636,18 +686,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBE832BF28CDAD1C00D8E953 /* APIHandler.swift in Sources */,
 				CBE8329928CC38BB00D8E953 /* AppDelegate.swift in Sources */,
 				CBE8329228CC38BB00D8E953 /* ErrorResponse.swift in Sources */,
+				CBE832B728CC8CDA00D8E953 /* LoginAPI.swift in Sources */,
 				CBE8329528CC38BB00D8E953 /* ProjectTextField.swift in Sources */,
 				CBE8329028CC38BB00D8E953 /* LabelDef.swift in Sources */,
 				CBE8328F28CC38BB00D8E953 /* FontSupport.swift in Sources */,
+				CBE832BB28CDA64900D8E953 /* LoginResponse.swift in Sources */,
 				CBE8329C28CC38BB00D8E953 /* SceneDelegate.swift in Sources */,
+				CBE832BD28CDA88400D8E953 /* LoginViewModel.swift in Sources */,
 				CBE8329428CC38BB00D8E953 /* UISupport.swift in Sources */,
 				CBE8328E28CC38BB00D8E953 /* SwinjectManager.swift in Sources */,
 				CBE8329A28CC38BB00D8E953 /* Errors.swift in Sources */,
 				CBE8329828CC38BB00D8E953 /* BaseAPI.swift in Sources */,
 				CBE8329628CC38BB00D8E953 /* MainViewController.swift in Sources */,
+				CBE832B528CC86F600D8E953 /* DBKeyValue.swift in Sources */,
 				CBE8329328CC38BB00D8E953 /* SuccessResponse.swift in Sources */,
+				CBE832B928CD78C500D8E953 /* RequestAdaptors.swift in Sources */,
 				CBE8329728CC38BB00D8E953 /* LoginViewController.swift in Sources */,
 				CBE8328D28CC38BB00D8E953 /* DialogManager.swift in Sources */,
 				CBE8329B28CC38BB00D8E953 /* GlobalExceptionHandler.swift in Sources */,

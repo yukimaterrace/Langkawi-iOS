@@ -10,26 +10,14 @@ import Combine
 
 class MainViewController: UIViewController {
     
-    var cancelable: AnyCancellable?
-    
     var label: UILabel?
     var iconStackView: UIStackView?
-    
-    let api = BaseAPI()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         layoutNavigationBar()
         layoutLabel()
         layoutIconStackView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        cancelable = api.request(vc: self, path: "/health_check", model: SuccessReponse.self) { [weak self] in
-            self?.label?.text = $0.message
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

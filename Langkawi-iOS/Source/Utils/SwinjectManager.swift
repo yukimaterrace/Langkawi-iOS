@@ -15,6 +15,7 @@ class SwinjectManager {
     
     func initialize() {
         container.register(GlobalExceptionHandler.self) { _ in GlobalExceptionHandler() }
+        container.register(LoginAPI.self) { _ in LoginAPIImpl() }
     }
 }
 

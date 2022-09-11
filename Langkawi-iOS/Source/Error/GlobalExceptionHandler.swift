@@ -14,12 +14,12 @@ class GlobalExceptionHandler {
         let message: String?
         switch error {
         case let err as APIStatusError:
-            title = err.response.status
-            message = err.response.error
+            title = err.response.error
+            message = err.response.exception
         case let err as AFError:
             message = err.localizedDescription
         default:
-            message = ""
+            message = error.localizedDescription
         }
         
         DialogManager.showAlert(vc: vc, title: title, message: message)

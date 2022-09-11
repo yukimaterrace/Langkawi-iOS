@@ -7,8 +7,16 @@
 
 import Foundation
 import UIKit
+import Combine
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate, SwinjectSupport, APIHandler {
+    
+    private lazy var vm = LoginViewModel()
+    
+    private var emailTextField: UITextField?
+    private var passwordTextField: UITextField?
+    
+    private var cancellable: AnyCancellable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,26 +28,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private func layout() {
         let container = UIView()
         
-        let loginIdTextField = createTextField(placeHolder: LabelDef.loginID, isSecureText: false)
+        let emailTextField = createTextField(placeHolder: LabelDef.email, isSecureText: false)
         let passwordTextField = createTextField(placeHolder: LabelDef.password, isSecureText: true)
         let button = createLoginButton()
         
-        container.addSubviewForAutoLayout(loginIdTextField)
+        container.addSubviewForAutoLayout(emailTextField)
         container.addSubviewForAutoLayout(passwordTextField)
         container.addSubviewForAutoLayout(button)
         
         NSLayoutConstraint.activate([
-            loginIdTextField.topAnchor.constraint(equalTo: container.topAnchor),
-            loginIdTextField.leftAnchor.constraint(equalTo: container.leftAnchor, constant: 20),
-            loginIdTextField.rightAnchor.constraint(equalTo: container.rightAnchor, constant: -20),
-            loginIdTextField.heightAnchor.constraint(equalToConstant: 40)
+            emailTextField.topAnchor.constraint(equalTo: container.topAnchor),
+            emailTextField.leftAnchor.constraint(equalTo: container.leftAnchor, constant: 20),
+            emailTextField.rightAnchor.constraint(equalTo: container.rightAnchor, constant: -20),
+            emailTextField.heightAnchor.constraint(equalToConstant: 40)
         ])
         
         NSLayoutConstraint.activate([
-            passwordTextField.topAnchor.constraint(equalTo: loginIdTextField.bottomAnchor, constant: 30),
-            passwordTextField.leftAnchor.constraint(equalTo: loginIdTextField.leftAnchor),
-            passwordTextField.rightAnchor.constraint(equalTo: loginIdTextField.rightAnchor),
-            passwordTextField.heightAnchor.constraint(equalTo: loginIdTextField.heightAnchor),
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 30),
+            passwordTextField.leftAnchor.constraint(equalTo: emailTextField.leftAnchor),
+            passwordTextField.rightAnchor.constraint(equalTo: emailTextField.rightAnchor),
+            passwordTextField.heightAnchor.constraint(equalTo: emailTextField.heightAnchor),
         ])
         
         NSLayoutConstraint.activate([
@@ -57,6 +65,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             container.rightAnchor.constraint(equalTo: view.rightAnchor),
             container.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
+        
+        self.emailTextField = emailTextField
+        self.passwordTextField = passwordTextField
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -91,6 +102,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func onClickButton(_ sender: UIButton) {
-        print("tapped")
+        cancellable = self.request(requester: { [weak self] in
+            guard let email = self?.emailTextField?.text,
+                  let password = self?.passwordTextField?.text else {
+                return nil
+            }
+            return vm.loginAPI.login(email: email, password: password)
+        }) { [weak self] (response: LoginResponse) in
+            self?.vm.loginCompletion(response: response)
+            self?.dismiss(animated: true)
+        }
     }
 }
