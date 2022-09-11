@@ -9,6 +9,6 @@ import Foundation
 
 class LabelDef {
     static let login = "ログイン"
-    static let loginID = "ログインID"
+    static let email = "メールアドレス"
     static let password = "パスワード"
 }
