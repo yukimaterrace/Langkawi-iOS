@@ -8,6 +8,7 @@ target 'Langkawi-iOS' do
   # Pods for Langkawi-iOS
   pod 'Alamofire'
   pod 'Swinject'
+  pod 'RealmSwift'
 
   target 'Langkawi-iOSTests' do
     inherit! :search_paths
