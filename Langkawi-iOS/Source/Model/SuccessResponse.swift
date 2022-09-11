@@ -8,5 +8,5 @@
 import Foundation
 
 struct SuccessReponse: Codable {
-    var message: String?
+    let message: String
 }
