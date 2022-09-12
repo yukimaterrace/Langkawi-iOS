@@ -22,7 +22,7 @@
 		CBE8329328CC38BB00D8E953 /* SuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8327D28CC38BB00D8E953 /* SuccessResponse.swift */; };
 		CBE8329428CC38BB00D8E953 /* UISupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8328028CC38BB00D8E953 /* UISupport.swift */; };
 		CBE8329528CC38BB00D8E953 /* ProjectTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8328128CC38BB00D8E953 /* ProjectTextField.swift */; };
-		CBE8329628CC38BB00D8E953 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8328328CC38BB00D8E953 /* MainViewController.swift */; };
+		CBE8329628CC38BB00D8E953 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8328328CC38BB00D8E953 /* HomeViewController.swift */; };
 		CBE8329728CC38BB00D8E953 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8328528CC38BB00D8E953 /* LoginViewController.swift */; };
 		CBE8329828CC38BB00D8E953 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8328728CC38BB00D8E953 /* BaseAPI.swift */; };
 		CBE8329928CC38BB00D8E953 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8328828CC38BB00D8E953 /* AppDelegate.swift */; };
@@ -39,6 +39,7 @@
 		CBE832BB28CDA64900D8E953 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832BA28CDA64900D8E953 /* LoginResponse.swift */; };
 		CBE832BD28CDA88400D8E953 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832BC28CDA88400D8E953 /* LoginViewModel.swift */; };
 		CBE832BF28CDAD1C00D8E953 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832BE28CDAD1C00D8E953 /* APIHandler.swift */; };
+		CBE832C128CEA47300D8E953 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832C028CEA47300D8E953 /* MainTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,7 +134,7 @@
 		CBE8327D28CC38BB00D8E953 /* SuccessResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessResponse.swift; sourceTree = "<group>"; };
 		CBE8328028CC38BB00D8E953 /* UISupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISupport.swift; sourceTree = "<group>"; };
 		CBE8328128CC38BB00D8E953 /* ProjectTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTextField.swift; sourceTree = "<group>"; };
-		CBE8328328CC38BB00D8E953 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CBE8328328CC38BB00D8E953 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CBE8328528CC38BB00D8E953 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CBE8328728CC38BB00D8E953 /* BaseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		CBE8328828CC38BB00D8E953 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +151,7 @@
 		CBE832BA28CDA64900D8E953 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		CBE832BC28CDA88400D8E953 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		CBE832BE28CDAD1C00D8E953 /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
+		CBE832C028CEA47300D8E953 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		EDE25603DB1C09BBAED28223 /* Pods-Langkawi-iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Langkawi-iOSTests.release.xcconfig"; path = "Target Support Files/Pods-Langkawi-iOSTests/Pods-Langkawi-iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -316,7 +318,8 @@
 		CBE8328228CC38BB00D8E953 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
-				CBE8328328CC38BB00D8E953 /* MainViewController.swift */,
+				CBE832C028CEA47300D8E953 /* MainTabBarController.swift */,
+				CBE832C228CEA4DA00D8E953 /* Home */,
 				CBE8328428CC38BB00D8E953 /* Login */,
 			);
 			path = Screen;
@@ -368,6 +371,14 @@
 				CBE832A228CC38F500D8E953 /* Font Awesome 6 Brands-Regular-400.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		CBE832C228CEA4DA00D8E953 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CBE8328328CC38BB00D8E953 /* HomeViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		D3EB055DDC6A7638CC8C5665 /* Frameworks */ = {
@@ -688,6 +699,7 @@
 			files = (
 				CBE832BF28CDAD1C00D8E953 /* APIHandler.swift in Sources */,
 				CBE8329928CC38BB00D8E953 /* AppDelegate.swift in Sources */,
+				CBE832C128CEA47300D8E953 /* MainTabBarController.swift in Sources */,
 				CBE8329228CC38BB00D8E953 /* ErrorResponse.swift in Sources */,
 				CBE832B728CC8CDA00D8E953 /* LoginAPI.swift in Sources */,
 				CBE8329528CC38BB00D8E953 /* ProjectTextField.swift in Sources */,
@@ -700,7 +712,7 @@
 				CBE8328E28CC38BB00D8E953 /* SwinjectManager.swift in Sources */,
 				CBE8329A28CC38BB00D8E953 /* Errors.swift in Sources */,
 				CBE8329828CC38BB00D8E953 /* BaseAPI.swift in Sources */,
-				CBE8329628CC38BB00D8E953 /* MainViewController.swift in Sources */,
+				CBE8329628CC38BB00D8E953 /* HomeViewController.swift in Sources */,
 				CBE832B528CC86F600D8E953 /* DBKeyValue.swift in Sources */,
 				CBE8329328CC38BB00D8E953 /* SuccessResponse.swift in Sources */,
 				CBE832B928CD78C500D8E953 /* RequestAdaptors.swift in Sources */,

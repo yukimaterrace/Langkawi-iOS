@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  HomeViewController.swift
 //  Langkawi-iOS
 //
 //  Created by Yuki Matsuo on 2022/08/30.
@@ -8,24 +8,19 @@
 import UIKit
 import Combine
 
-class MainViewController: UIViewController {
+class HomeViewController: UIViewController {
     
     var label: UILabel?
     var iconStackView: UIStackView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        layoutNavigationBar()
-        layoutLabel()
-        layoutIconStackView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        let vc = LoginViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        layoutLabel()
+        layoutIconStackView()
     }
     
     private func layoutNavigationBar() {
@@ -49,16 +44,13 @@ class MainViewController: UIViewController {
     
     private func layoutLabel() {
         let label = UILabel()
-        label.text = "Hello, World"
+        label.text = tabBarItem.title
         label.textColor = .red
         label.textAlignment = .center
         
         view.addSubviewForAutoLayout(label)
         
-        guard let height = navigationController?.navigationBar.frame.height else {
-            return
-        }
-        
+        let height = view.safeAreaInsets.top
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: view.topAnchor, constant: height + 50),
             label.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
