@@ -11,4 +11,7 @@ class LabelDef {
     static let login = "ログイン"
     static let email = "メールアドレス"
     static let password = "パスワード"
+    static let home = "ホーム"
+    static let search = "探す"
+    static let account = "アカウント"
 }
