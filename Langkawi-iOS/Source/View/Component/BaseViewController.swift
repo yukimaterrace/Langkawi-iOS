@@ -13,3 +13,5 @@ class BaseViewController:
     SwinjectSupport,
     UseEffectSupport,
     APIHandler {}
+
+typealias OwnerVC = SwinjectSupport & UseEffectSupport & APIHandler

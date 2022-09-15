@@ -15,4 +15,11 @@ class DialogManager {
         dialog.addAction(UIAlertAction(title: "OK", style: .default))
         vc?.present(dialog, animated: false, completion: nil)
     }
+    
+    static func showDialog(presenter: UIViewController?, vc: UIViewController) {
+        guard let presenter = presenter as? DialogPresenterSupport else {
+            return
+        }
+        presenter.presentDialog(vc: vc, animated: true)
+    }
 }

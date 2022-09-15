@@ -16,10 +16,7 @@ class GlobalExceptionHandler {
         case let err as APIStatusError:
             switch err.status {
             case 401:
-                guard let vc = vc as? DialogPresenterSupport else {
-                    break
-                }
-                vc.presentDialog(vc: LoginViewController(), animated: true)
+                DialogManager.showDialog(presenter: vc, vc: LoginViewController())
                 return
             default:
                 break
