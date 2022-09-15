@@ -11,7 +11,9 @@ import Combine
 
 class BaseAPI: SwinjectSupport {
     
-    private let apiPath = "http://localhost:3000/api"
+    private let basePath = "http://localhost:3000"
+    private lazy var apiPath = "\(basePath)/api"
+    private lazy var imagePath = "\(basePath)/uploads"
     
     private lazy var globalExceptionHandler = resolveInstance(GlobalExceptionHandler.self)
     
@@ -99,7 +101,13 @@ class BaseAPI: SwinjectSupport {
                         throw AFError.responseSerializationFailed(reason: .invalidEmptyResponse(type: "empty"))
                     }
                     
+                    let df = DateFormatter()
+                    df.dateFormat = LabelDef.dateFormat
+                    
                     let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    decoder.dateDecodingStrategy = .formatted(df)
+                    
                     do {
                         if status == 200 {
                             return try decoder.decode(model, from: data)
@@ -112,6 +120,29 @@ class BaseAPI: SwinjectSupport {
                             throw error
                         }
                         throw AFError.responseSerializationFailed(reason: .decodingFailed(error: error))
+                    }
+                case .failure(let error):
+                    throw error
+                }
+            }.eraseToAnyPublisher()
+    }
+    
+    func getImage(path: String) -> AnyPublisher<UIImage, Error> {
+        return AF.request("\(imagePath)\(path)", method: .get).publishData()
+            .tryMap { (dr: DataResponse<Data, AFError>) -> UIImage in
+                switch dr.result {
+                case .success(let data):
+                    guard let status = dr.response?.statusCode else {
+                        throw AFError.responseSerializationFailed(reason: .invalidEmptyResponse(type: "empty"))
+                    }
+                    
+                    if status == 200 {
+                        return UIImage(data: data) ?? UIImage()
+                    } else {
+                        let decoder = JSONDecoder()
+                        decoder.keyDecodingStrategy = .convertFromSnakeCase
+                        let errorResponse = try decoder.decode(ErrorResponse.self, from: data)
+                        throw APIStatusError(status: status, response: errorResponse)
                     }
                 case .failure(let error):
                     throw error
