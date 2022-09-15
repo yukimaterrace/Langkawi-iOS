@@ -17,7 +17,9 @@ class LoginViewModel: SwinjectSupport {
         let realm = try! Realm()
         let kv = realm.objects(DBKeyValue.self).where { $0.key == DBKeys.apiToken }.first
         if let kv = kv {
-            kv.value = response.token
+            try! realm.write {
+                kv.value = response.token
+            }
             return
         }
         

@@ -6,7 +6,6 @@
 //
 
 import Combine
-import UIKit
 
 protocol LoginAPI {
     func login(email: String, password: String) -> AnyPublisher<LoginResponse, Error>

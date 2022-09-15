@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 import Combine
 
-class LoginViewController: UIViewController, UITextFieldDelegate, SwinjectSupport, APIHandler {
+class LoginViewController: BaseViewController, UITextFieldDelegate, DialogPresentedSupport {
+    internal var parentVC: DialogPresenterSupport?
     
     private lazy var vm = LoginViewModel()
     
@@ -68,6 +69,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, SwinjectSuppor
         
         self.emailTextField = emailTextField
         self.passwordTextField = passwordTextField
+        
+        // TODO: 削除
+        emailTextField.text = "shaun@fisher.net"
+        passwordTextField.text = "12345"
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -110,7 +115,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, SwinjectSuppor
             return vm.loginAPI.login(email: email, password: password)
         }) { [weak self] (response: LoginResponse) in
             self?.vm.loginCompletion(response: response)
-            self?.dismiss(animated: true)
+            self?.sendDialogEventAndDismiss(event: .ok)
         }
     }
 }

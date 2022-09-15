@@ -14,6 +14,16 @@ class GlobalExceptionHandler {
         let message: String?
         switch error {
         case let err as APIStatusError:
+            switch err.status {
+            case 401:
+                guard let vc = vc as? DialogPresenterSupport else {
+                    break
+                }
+                vc.presentDialog(vc: LoginViewController(), animated: true)
+                return
+            default:
+                break
+            }
             title = err.response.error
             message = err.response.exception
         case let err as AFError:

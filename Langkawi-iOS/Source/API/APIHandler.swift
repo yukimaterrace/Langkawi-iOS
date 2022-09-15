@@ -8,37 +8,33 @@
 import UIKit
 import Combine
 
-protocol APIHandler {
-    
-    func request<T: Decodable>(
-        errorHandler: ((Error) -> Bool)?,
-        requester: () -> AnyPublisher<T, Error>?,
-        handler: @escaping (T) -> Void
-    ) -> AnyCancellable?
-}
+protocol APIHandler: UIViewController & SwinjectSupport {}
 
-extension APIHandler where Self: UIViewController & SwinjectSupport {
+extension APIHandler {
     
-    func request<T: Decodable>(
+    func request<T>(
         errorHandler: ((Error) -> Bool)? = nil,
         requester: () -> AnyPublisher<T, Error>?,
         handler: @escaping (T) -> Void
     ) -> AnyCancellable? {
         let globalErrorHandler = self.resolveInstance(GlobalExceptionHandler.self)
-        return requester()?.sink(receiveCompletion: { [weak self] in
-            switch $0 {
-            case .finished:
-                break
-            case .failure(let error):
-                var cont = true
-                if let errorHandler = errorHandler {
-                    cont = errorHandler(error)
+        return requester()?
+            .subscribe(on: DispatchQueue.global())
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { [weak self] in
+                switch $0 {
+                case .finished:
+                    break
+                case .failure(let error):
+                    var cont = true
+                    if let errorHandler = errorHandler {
+                        cont = errorHandler(error)
+                    }
+                    
+                    if cont {
+                        globalErrorHandler.handle(error: error, vc: self)
+                    }
                 }
-                
-                if cont {
-                    globalErrorHandler.handle(error: error, vc: self)
-                }
-            }
-        }, receiveValue: handler)
+            }, receiveValue: handler)
     }
 }

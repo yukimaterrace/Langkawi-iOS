@@ -24,11 +24,11 @@ class MainTabBarController: UITabBarController {
             selectedImage: homeTabBarItemImage(color: .blue)
         )
         
-        let searchViewController = HomeViewController()
-        searchViewController.tabBarItem = UITabBarItem(
-            title: LabelDef.search,
-            image: searchTabBarItemImage(color: .black),
-            selectedImage: searchTabBarItemImage(color: .blue)
+        let findViewController = UINavigationController(rootViewController: FindViewController())
+        findViewController.tabBarItem = UITabBarItem(
+            title: LabelDef.find,
+            image: findTabBarItemImage(color: .black),
+            selectedImage: findTabBarItemImage(color: .blue)
         )
         
         let accountViewController = HomeViewController()
@@ -40,7 +40,7 @@ class MainTabBarController: UITabBarController {
         
         viewControllers = [
             homeViewController,
-            searchViewController,
+            findViewController,
             accountViewController
         ]
     }
@@ -70,7 +70,7 @@ class MainTabBarController: UITabBarController {
         return tabBarItemImage(name: "house", color: color)
     }
     
-    private func searchTabBarItemImage(color: UIColor) -> UIImage? {
+    private func findTabBarItemImage(color: UIColor) -> UIImage? {
         return tabBarItemImage(name: "magnifying-glass", color: color)
     }
     
