@@ -29,3 +29,23 @@ extension UILabel {
         return UIGraphicsGetImageFromCurrentImageContext()
     }
 }
+
+extension UIViewController {
+    func layoutNavigationBarBorder() {
+        let border = UIView()
+        border.backgroundColor = .lightGray
+        
+        guard let navigationBar = navigationController?.navigationBar else {
+            return
+        }
+        
+        navigationBar.addSubviewForAutoLayout(border)
+        
+        NSLayoutConstraint.activate([
+            border.heightAnchor.constraint(equalToConstant: 1),
+            border.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor),
+            border.leftAnchor.constraint(equalTo: navigationBar.leftAnchor),
+            border.rightAnchor.constraint(equalTo: navigationBar.rightAnchor)
+        ])
+    }
+}
