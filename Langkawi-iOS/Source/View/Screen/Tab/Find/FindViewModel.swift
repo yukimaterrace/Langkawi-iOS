@@ -9,19 +9,17 @@ import Combine
 import UIKit
 
 class FindViewModel: SwinjectSupport {
-    typealias Owner = UseEffectSupport & APIHandler & DialogPresenterSupport
-    
     private lazy var userApi = resolveInstance(UserAPI.self)
     private lazy var imageApi = resolveInstance(ImageAPI.self)
     
-    private weak var owner: Owner?
+    private weak var owner: (OwnerVC & DialogPresenterSupport)?
     private let onFetchCompletion: () -> Void
     
     var cancellables: Set<AnyCancellable> = []
     
     private var users: [User] = []
     
-    init(owner: Owner, onFetchCompletion: @escaping () -> Void) {
+    init(owner: OwnerVC & DialogPresenterSupport, onFetchCompletion: @escaping () -> Void) {
         self.owner = owner
         self.onFetchCompletion = onFetchCompletion
     }
