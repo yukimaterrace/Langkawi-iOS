@@ -41,7 +41,7 @@
 		CBE832BF28CDAD1C00D8E953 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832BE28CDAD1C00D8E953 /* APIHandler.swift */; };
 		CBE832C128CEA47300D8E953 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832C028CEA47300D8E953 /* MainTabBarController.swift */; };
 		CBE832C628D158BE00D8E953 /* FindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832C528D158BE00D8E953 /* FindViewController.swift */; };
-		CBE832C928D1625500D8E953 /* UserCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832C828D1625500D8E953 /* UserCellView.swift */; };
+		CBE832C928D1625500D8E953 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832C828D1625500D8E953 /* UserCell.swift */; };
 		CBE832CB28D1735E00D8E953 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832CA28D1735E00D8E953 /* UserAPI.swift */; };
 		CBE832CD28D1747400D8E953 /* UsersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832CC28D1747400D8E953 /* UsersResponse.swift */; };
 		CBE832D028D1750800D8E953 /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832CF28D1750800D8E953 /* UserType.swift */; };
@@ -55,6 +55,15 @@
 		CBE832E228D3191A00D8E953 /* LifecycleInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832E128D3191A00D8E953 /* LifecycleInjector.swift */; };
 		CBE832E428D31A1500D8E953 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832E328D31A1500D8E953 /* BaseViewController.swift */; };
 		CBE832E628D321B300D8E953 /* UseEffectSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832E528D321B300D8E953 /* UseEffectSupport.swift */; };
+		CBE832E828D697B000D8E953 /* RelationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832E728D697B000D8E953 /* RelationStatus.swift */; };
+		CBE832EA28D6980900D8E953 /* RelationPositionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832E928D6980900D8E953 /* RelationPositionStatus.swift */; };
+		CBE832EC28D6994600D8E953 /* RelationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832EB28D6994600D8E953 /* RelationResponse.swift */; };
+		CBE832EE28D699B000D8E953 /* RelationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832ED28D699B000D8E953 /* RelationsResponse.swift */; };
+		CBE832F028D69F2C00D8E953 /* UserIntroductionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832EF28D69F2C00D8E953 /* UserIntroductionCell.swift */; };
+		CBE832F228D6A2B300D8E953 /* UserNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832F128D6A2B300D8E953 /* UserNameCell.swift */; };
+		CBE832F428D6A57100D8E953 /* RelatedUserCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832F328D6A57100D8E953 /* RelatedUserCollectionView.swift */; };
+		CBE832F628D6A58600D8E953 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832F528D6A58600D8E953 /* HomeViewModel.swift */; };
+		CBE832F828D6B55F00D8E953 /* RelationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE832F728D6B55F00D8E953 /* RelationAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,7 +177,7 @@
 		CBE832BE28CDAD1C00D8E953 /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
 		CBE832C028CEA47300D8E953 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		CBE832C528D158BE00D8E953 /* FindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindViewController.swift; sourceTree = "<group>"; };
-		CBE832C828D1625500D8E953 /* UserCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellView.swift; sourceTree = "<group>"; };
+		CBE832C828D1625500D8E953 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		CBE832CA28D1735E00D8E953 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		CBE832CC28D1747400D8E953 /* UsersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersResponse.swift; sourceTree = "<group>"; };
 		CBE832CF28D1750800D8E953 /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
@@ -182,6 +191,15 @@
 		CBE832E128D3191A00D8E953 /* LifecycleInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifecycleInjector.swift; sourceTree = "<group>"; };
 		CBE832E328D31A1500D8E953 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CBE832E528D321B300D8E953 /* UseEffectSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseEffectSupport.swift; sourceTree = "<group>"; };
+		CBE832E728D697B000D8E953 /* RelationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationStatus.swift; sourceTree = "<group>"; };
+		CBE832E928D6980900D8E953 /* RelationPositionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationPositionStatus.swift; sourceTree = "<group>"; };
+		CBE832EB28D6994600D8E953 /* RelationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationResponse.swift; sourceTree = "<group>"; };
+		CBE832ED28D699B000D8E953 /* RelationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationsResponse.swift; sourceTree = "<group>"; };
+		CBE832EF28D69F2C00D8E953 /* UserIntroductionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIntroductionCell.swift; sourceTree = "<group>"; };
+		CBE832F128D6A2B300D8E953 /* UserNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameCell.swift; sourceTree = "<group>"; };
+		CBE832F328D6A57100D8E953 /* RelatedUserCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedUserCollectionView.swift; sourceTree = "<group>"; };
+		CBE832F528D6A58600D8E953 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		CBE832F728D6B55F00D8E953 /* RelationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationAPI.swift; sourceTree = "<group>"; };
 		EDE25603DB1C09BBAED28223 /* Pods-Langkawi-iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Langkawi-iOSTests.release.xcconfig"; path = "Target Support Files/Pods-Langkawi-iOSTests/Pods-Langkawi-iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -324,6 +342,8 @@
 				CBE8327C28CC38BB00D8E953 /* ErrorResponse.swift */,
 				CBE832D728D1A7E700D8E953 /* ImageUrl.swift */,
 				CBE832BA28CDA64900D8E953 /* LoginResponse.swift */,
+				CBE832EB28D6994600D8E953 /* RelationResponse.swift */,
+				CBE832ED28D699B000D8E953 /* RelationsResponse.swift */,
 				CBE8327D28CC38BB00D8E953 /* SuccessResponse.swift */,
 				CBE832D328D1A2FF00D8E953 /* User.swift */,
 				CBE832D528D1A79800D8E953 /* UserDetail.swift */,
@@ -381,6 +401,7 @@
 				CBE8328728CC38BB00D8E953 /* BaseAPI.swift */,
 				CBE832DB28D2AA5F00D8E953 /* ImageAPI.swift */,
 				CBE832B628CC8CDA00D8E953 /* LoginAPI.swift */,
+				CBE832F728D6B55F00D8E953 /* RelationAPI.swift */,
 				CBE832B828CD78C500D8E953 /* RequestAdaptors.swift */,
 				CBE832CA28D1735E00D8E953 /* UserAPI.swift */,
 			);
@@ -419,6 +440,8 @@
 			isa = PBXGroup;
 			children = (
 				CBE8328328CC38BB00D8E953 /* HomeViewController.swift */,
+				CBE832F528D6A58600D8E953 /* HomeViewModel.swift */,
+				CBE832F328D6A57100D8E953 /* RelatedUserCollectionView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -444,7 +467,9 @@
 		CBE832C728D1623800D8E953 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				CBE832C828D1625500D8E953 /* UserCellView.swift */,
+				CBE832C828D1625500D8E953 /* UserCell.swift */,
+				CBE832EF28D69F2C00D8E953 /* UserIntroductionCell.swift */,
+				CBE832F128D6A2B300D8E953 /* UserNameCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -453,6 +478,8 @@
 			isa = PBXGroup;
 			children = (
 				CBE832D128D175C500D8E953 /* GenderType.swift */,
+				CBE832E928D6980900D8E953 /* RelationPositionStatus.swift */,
+				CBE832E728D697B000D8E953 /* RelationStatus.swift */,
 				CBE832CF28D1750800D8E953 /* UserType.swift */,
 			);
 			path = Enum;
@@ -777,6 +804,7 @@
 				CBE832CD28D1747400D8E953 /* UsersResponse.swift in Sources */,
 				CBE832BF28CDAD1C00D8E953 /* APIHandler.swift in Sources */,
 				CBE8329928CC38BB00D8E953 /* AppDelegate.swift in Sources */,
+				CBE832EE28D699B000D8E953 /* RelationsResponse.swift in Sources */,
 				CBE832C128CEA47300D8E953 /* MainTabBarController.swift in Sources */,
 				CBE8329228CC38BB00D8E953 /* ErrorResponse.swift in Sources */,
 				CBE832E428D31A1500D8E953 /* BaseViewController.swift in Sources */,
@@ -784,17 +812,23 @@
 				CBE8329528CC38BB00D8E953 /* ProjectTextField.swift in Sources */,
 				CBE832E228D3191A00D8E953 /* LifecycleInjector.swift in Sources */,
 				CBE8329028CC38BB00D8E953 /* LabelDef.swift in Sources */,
+				CBE832F028D69F2C00D8E953 /* UserIntroductionCell.swift in Sources */,
+				CBE832F628D6A58600D8E953 /* HomeViewModel.swift in Sources */,
 				CBE832D428D1A2FF00D8E953 /* User.swift in Sources */,
 				CBE832C628D158BE00D8E953 /* FindViewController.swift in Sources */,
-				CBE832C928D1625500D8E953 /* UserCellView.swift in Sources */,
+				CBE832C928D1625500D8E953 /* UserCell.swift in Sources */,
 				CBE8328F28CC38BB00D8E953 /* FontSupport.swift in Sources */,
 				CBE832BB28CDA64900D8E953 /* LoginResponse.swift in Sources */,
 				CBE832DC28D2AA5F00D8E953 /* ImageAPI.swift in Sources */,
 				CBE832D628D1A79800D8E953 /* UserDetail.swift in Sources */,
 				CBE8329C28CC38BB00D8E953 /* SceneDelegate.swift in Sources */,
 				CBE832BD28CDA88400D8E953 /* LoginViewModel.swift in Sources */,
+				CBE832EA28D6980900D8E953 /* RelationPositionStatus.swift in Sources */,
+				CBE832F428D6A57100D8E953 /* RelatedUserCollectionView.swift in Sources */,
 				CBE832D228D175C500D8E953 /* GenderType.swift in Sources */,
 				CBE8329428CC38BB00D8E953 /* UISupport.swift in Sources */,
+				CBE832F828D6B55F00D8E953 /* RelationAPI.swift in Sources */,
+				CBE832E828D697B000D8E953 /* RelationStatus.swift in Sources */,
 				CBE8328E28CC38BB00D8E953 /* SwinjectManager.swift in Sources */,
 				CBE832E628D321B300D8E953 /* UseEffectSupport.swift in Sources */,
 				CBE8329A28CC38BB00D8E953 /* Errors.swift in Sources */,
@@ -806,10 +840,12 @@
 				CBE8329728CC38BB00D8E953 /* LoginViewController.swift in Sources */,
 				CBE832D828D1A7E700D8E953 /* ImageUrl.swift in Sources */,
 				CBE832DE28D2FE7F00D8E953 /* DialogEventSupport.swift in Sources */,
+				CBE832F228D6A2B300D8E953 /* UserNameCell.swift in Sources */,
 				CBE832DA28D1B28E00D8E953 /* FindViewModel.swift in Sources */,
 				CBE832D028D1750800D8E953 /* UserType.swift in Sources */,
 				CBE8328D28CC38BB00D8E953 /* DialogManager.swift in Sources */,
 				CBE832CB28D1735E00D8E953 /* UserAPI.swift in Sources */,
+				CBE832EC28D6994600D8E953 /* RelationResponse.swift in Sources */,
 				CBE8329B28CC38BB00D8E953 /* GlobalExceptionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
