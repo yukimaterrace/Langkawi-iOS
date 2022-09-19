@@ -8,84 +8,74 @@
 import UIKit
 import Combine
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController, DialogPresenterSupport {
+    private lazy var vm = HomeViewModel(owner: self)
     
-    var label: UILabel?
-    var iconStackView: UIStackView?
-
+    var eventSubject: PassthroughSubject<DialogEvent, Never> = PassthroughSubject()
+    
+    var relatedUserCollectionViews: [RelatedUserCollectionView] = []
+    
+    private var containerView: UIView?
+    
     override func viewDidLoad() {
+        layoutNavigationBar()
+        layout()
+        
+        vm.setup()
         super.viewDidLoad()
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        layoutLabel()
-        layoutIconStackView()
-    }
-    
     private func layoutNavigationBar() {
-        guard let navigationBar = navigationController?.navigationBar else {
-            return
-        }
-        
-        navigationItem.title = "ホーム画面"
-        let border = UIView()
-        border.backgroundColor = .lightGray
-        
-        navigationBar.addSubviewForAutoLayout(border)
-        
-        NSLayoutConstraint.activate([
-            border.heightAnchor.constraint(equalToConstant: 1),
-            border.leftAnchor.constraint(equalTo: navigationBar.leftAnchor),
-            border.rightAnchor.constraint(equalTo: navigationBar.rightAnchor),
-            border.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor)
-        ])
+        navigationItem.title = LabelDef.home
+        layoutNavigationBarBorder()
     }
     
-    private func layoutLabel() {
-        let label = UILabel()
-        label.text = tabBarItem.title
-        label.textColor = .red
-        label.textAlignment = .center
+    private func layout() {
+        let collectionViewHeight: CGFloat = 136
+        let verticalMargin: CGFloat = 30
         
-        view.addSubviewForAutoLayout(label)
-        
-        let height = view.safeAreaInsets.top
-        NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: view.topAnchor, constant: height + 50),
-            label.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-            label.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
-            label.heightAnchor.constraint(equalToConstant: 50)
-        ])
-        
-        self.label = label
-    }
-    
-    private func layoutIconStackView() {
-        let iconStackView = UIStackView()
-        iconStackView.axis = .horizontal
-        iconStackView.alignment = .center
-        iconStackView.distribution = .fillEqually
-        
-        let label1 = UILabel.fontAwesome(type: .solid, name: "user", color: .black, size: 70)
-        let label2 = UILabel.fontAwesome(type: .regular, name: "user", color: .black, size: 70)
-        
-        iconStackView.addArrangedSubview(label1)
-        iconStackView.addArrangedSubview(label2)
-        
-        view.addSubviewForAutoLayout(iconStackView)
-        
-        guard let label = label else {
-            return
+        relatedUserCollectionViews = RelationPositionStatus.allCases.map { [weak self] in
+            RelatedUserCollectionView(owner: self, positionStatus: $0)
         }
         
+        let scrollView = UIScrollView()
+        scrollView.isScrollEnabled = true
+        
+        view.addSubviewForAutoLayout(scrollView)
+        
         NSLayoutConstraint.activate([
-            iconStackView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 50),
-            iconStackView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            iconStackView.rightAnchor.constraint(equalTo: view.rightAnchor)
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            scrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         
-        self.iconStackView = iconStackView
+        let container = UIView()
+        scrollView.addSubviewForAutoLayout(container)
+        
+        let height = collectionViewHeight + verticalMargin
+        NSLayoutConstraint.activate([
+            container.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            container.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
+            container.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
+            container.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            container.widthAnchor.constraint(equalTo: view.widthAnchor),
+            container.heightAnchor.constraint(equalToConstant: height * CGFloat(relatedUserCollectionViews.count))
+        ])
+        
+        self.containerView = container
+        
+        var anchor = container.topAnchor
+        relatedUserCollectionViews.forEach {
+            container.addSubviewForAutoLayout($0)
+            NSLayoutConstraint.activate([
+                $0.topAnchor.constraint(equalTo: anchor, constant: verticalMargin),
+                $0.leftAnchor.constraint(equalTo: container.leftAnchor),
+                $0.rightAnchor.constraint(equalTo: container.rightAnchor),
+                $0.heightAnchor.constraint(equalToConstant: collectionViewHeight)
+            ])
+            anchor = $0.bottomAnchor
+        }
     }
 }
 
