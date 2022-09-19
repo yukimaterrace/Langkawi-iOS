@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum UserType: String, Codable {
+enum UserType: String, Codable, CaseIterable {
     case admin
     case general
 }
