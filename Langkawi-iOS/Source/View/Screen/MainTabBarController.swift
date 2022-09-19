@@ -17,7 +17,7 @@ class MainTabBarController: UITabBarController {
     }
     
     private func setupViewControllers() {
-        let homeViewController = HomeViewController()
+        let homeViewController = UINavigationController(rootViewController: HomeViewController())
         homeViewController.tabBarItem = UITabBarItem(
             title: LabelDef.home,
             image: homeTabBarItemImage(color: .black),

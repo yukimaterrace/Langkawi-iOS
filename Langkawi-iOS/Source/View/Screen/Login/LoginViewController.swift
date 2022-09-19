@@ -71,7 +71,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, DialogPresen
         self.passwordTextField = passwordTextField
         
         // TODO: 削除
-        emailTextField.text = "shaun@fisher.net"
+        emailTextField.text = "shirly.robel@hamill.co"
         passwordTextField.text = "12345"
     }
     
