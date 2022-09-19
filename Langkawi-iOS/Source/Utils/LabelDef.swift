@@ -16,6 +16,18 @@ class LabelDef {
     static let account = "アカウント"
     static let male = "男性"
     static let female = "女性"
+    static let lookUpMore = "もっと見る"
+    
+    static let fromMe = "あなたから"
+    static let fromYou = "お相手から"
+    
+    static let pending = "申し込み"
+    static let withdraw = "申し込み取下"
+    static let accepted = "交際受諾"
+    static let declined = "申込お断り"
+    static let disconnected = "交際取下"
+    static let refused = "交際拒否"
+    
     static let ageSuffix = "歳"
     static let dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 }
