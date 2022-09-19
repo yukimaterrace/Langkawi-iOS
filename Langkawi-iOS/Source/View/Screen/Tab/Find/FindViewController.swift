@@ -15,11 +15,11 @@ class FindViewController: BaseViewController, DialogPresenterSupport {
         self?.collectionView?.reloadData()
     }
     
-    private var cellRegistration: UICollectionView.CellRegistration<UserCellView, Int>?
+    private var cellRegistration: UICollectionView.CellRegistration<UserIntroductionCell, Int>?
     
     private var collectionView: UICollectionView?
     
-    internal var eventSubject: PassthroughSubject<DialogEvent, Never> = PassthroughSubject()
+    var eventSubject: PassthroughSubject<DialogEvent, Never> = PassthroughSubject()
     
     override func viewDidLoad() {
         vm.setup()
@@ -39,7 +39,7 @@ class FindViewController: BaseViewController, DialogPresenterSupport {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        cellRegistration = UICollectionView.CellRegistration<UserCellView, Int> { [weak self] cell, _, itemIdentifier in
+        cellRegistration = UICollectionView.CellRegistration<UserIntroductionCell, Int> { [weak self] cell, _, itemIdentifier in
             cell.apiHandler = self
             cell.user = self?.vm.resolveUser(index: itemIdentifier)
         }
