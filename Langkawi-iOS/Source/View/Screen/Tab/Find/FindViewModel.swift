@@ -2,53 +2,18 @@
 //  FindViewModel.swift
 //  Langkawi-iOS
 //
-//  Created by Yuki Matsuo on 2022/09/14.
+//  Created by Yuki Matsuo on 2022/09/20.
 //
 
 import Combine
-import UIKit
 
 class FindViewModel: SwinjectSupport {
-    private lazy var userApi = resolveInstance(UserAPI.self)
-    private lazy var imageApi = resolveInstance(ImageAPI.self)
     
-    private weak var owner: OwnerVC?
-    private let onFetchCompletion: () -> Void
+    private lazy var userAPI = resolveInstance(UserAPI.self)
     
-    var cancellables: Set<AnyCancellable> = []
-    
-    private var users: [User] = []
-    
-    init(owner: OwnerVC, onFetchCompletion: @escaping () -> Void) {
-        self.owner = owner
-        self.onFetchCompletion = onFetchCompletion
-    }
-    
-    func setup() {
-        owner?.useEffect(dependencies: [
-            LoginTokenManager.loginTokenStored.eraseToAnyPublisher()
-        ]) { [weak self] in
-            self?.fetch(page: 0)
+    var requester: UsersViewModel.Requester {
+        return { [weak self] (page: Int, pageSize: Int) -> AnyPublisher<[User], Error>? in
+            self?.userAPI.users(page: page, pageSize: pageSize).map { $0.list }.eraseToAnyPublisher()
         }
-    }
-    
-    func fetch(page: Int, pageSize: Int = 100) -> AnyCancellable? {
-        return owner?.request(requester: { [weak self] in
-            self?.userApi.users(page: page, pageSize: pageSize)
-        }) { [weak self] in
-            self?.users = $0.list
-            self?.onFetchCompletion()
-        }
-    }
-    
-    func resolveUser(index: Int) -> User? {
-        guard index < users.count else {
-            return nil
-        }
-        return users[index]
-    }
-    
-    func resolveCount() -> Int {
-        return users.count
     }
 }

@@ -15,6 +15,14 @@ class RelatedUsersViewController: BaseViewController {
     
     var collectionView: UICollectionView?
     
+    private var lookUpMoreAction: UIAction {
+        return UIAction(title: "lookUpMore") { [weak self] _ in
+            let vc = PositionStatusUsersViewController()
+            vc.vm.positionStatus = self?.vm.positionStatus
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     override func viewDidLoad() {
         vm.setup()
         layout()
@@ -44,6 +52,7 @@ class RelatedUsersViewController: BaseViewController {
         lookUpMoreButton.setAttributedTitle(label, for: .normal)
         lookUpMoreButton.setTitleColor(.blue, for: .normal)
         lookUpMoreButton.layer.borderWidth = 0
+        lookUpMoreButton.addAction(lookUpMoreAction, for: .touchUpInside)
         
         headerView.addArrangedSubview(titleLabel)
         headerView.addArrangedSubview(lookUpMoreButton)
