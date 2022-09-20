@@ -1,5 +1,5 @@
 //
-//  GlobalExceptionHandler.swift
+//  GlobalErrorHandler.swift
 //  Langkawi-iOS
 //
 //  Created by Yuki Matsuo on 2022/09/03.
@@ -7,9 +7,9 @@
 
 import Alamofire
 
-class GlobalExceptionHandler {
+class GlobalErrorHandler {
     
-    func handle(error: Error, vc: UIViewController?) {
+    static func handle(error: Error, vc: UIViewController?) {
         var title: String?
         let message: String?
         switch error {

@@ -17,9 +17,10 @@ class DialogManager {
     }
     
     static func showDialog(presenter: UIViewController?, vc: UIViewController) {
-        guard let presenter = presenter as? DialogPresenterSupport else {
-            return
+        if let presenter = presenter as? DialogPresenterSupport {
+            presenter.presentDialog(vc: vc, animated: true)
+        } else {
+            presenter?.present(vc, animated: true)
         }
-        presenter.presentDialog(vc: vc, animated: true)
     }
 }
