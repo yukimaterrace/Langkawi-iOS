@@ -1,5 +1,5 @@
 //
-//  RelatedUserCollectionView.swift
+//  RelatedUsersViewController.swift
 //  Langkawi-iOS
 //
 //  Created by Yuki Matsuo on 2022/09/18.
@@ -8,30 +8,17 @@
 import UIKit
 import Combine
 
-class RelatedUserCollectionView: UIView {
-    
-    private weak var owner: APIHandler?
-    
-    var positionStatus: RelationPositionStatus?
-    
-    @Published var users: [User] = []
+class RelatedUsersViewController: BaseViewController {
+    lazy var vm = RelatedUsersViewModel(owner: self)
     
     private var registration: UICollectionView.CellRegistration<UserNameCell, Int>?
     
-    private var collectionView: UICollectionView?
+    var collectionView: UICollectionView?
     
-    private var cancellable: AnyCancellable?
-    
-    init(owner: APIHandler?, positionStatus: RelationPositionStatus) {
-        self.owner = owner
-        self.positionStatus = positionStatus
-        super.init(frame: .zero)
+    override func viewDidLoad() {
+        vm.setup()
         layout()
-        subscribe()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("not implemenred")
+        super.viewDidLoad()
     }
     
     private func layout() {
@@ -40,17 +27,17 @@ class RelatedUserCollectionView: UIView {
         headerView.distribution = .equalSpacing
         headerView.alignment = .center
         
-        self.addSubviewForAutoLayout(headerView)
+        view.addSubviewForAutoLayout(headerView)
         NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: self.topAnchor),
-            headerView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 14),
-            headerView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -14),
+            headerView.topAnchor.constraint(equalTo: view.topAnchor),
+            headerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 14),
+            headerView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -14),
             headerView.heightAnchor.constraint(equalToConstant: 24)
         ])
         
         let titleLabel = UILabel()
         titleLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
-        titleLabel.text = positionStatus?.string()
+        titleLabel.text = vm.positionStatus?.string()
         
         let lookUpMoreButton = UIButton()
         let label = NSAttributedString(string: LabelDef.lookUpMore, attributes: [.font: UIFont.systemFont(ofSize: 12)])
@@ -70,34 +57,28 @@ class RelatedUserCollectionView: UIView {
         collectionView.dataSource = self
         
         self.registration = UICollectionView.CellRegistration<UserNameCell, Int> { [weak self] cell, _, itemIdentifier in
-            guard let self = self, itemIdentifier < self.users.count else {
+            guard let self = self, itemIdentifier < self.vm.users.count else {
                 return
             }
-            cell.apiHandler = self.owner
-            cell.user = self.users[itemIdentifier]
+            cell.apiHandler = self
+            cell.user = self.vm.users[itemIdentifier]
         }
         
-        self.addSubviewForAutoLayout(collectionView)
+        view.addSubviewForAutoLayout(collectionView)
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
-            collectionView.leftAnchor.constraint(equalTo: self.leftAnchor),
-            collectionView.rightAnchor.constraint(equalTo: self.rightAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
         self.collectionView = collectionView
     }
-    
-    private func subscribe() {
-        cancellable = $users.sink { [weak self] _ in
-            self?.collectionView?.reloadData()
-        }
-    }
 }
 
-extension RelatedUserCollectionView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension RelatedUsersViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return users.count
+        return vm.users.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

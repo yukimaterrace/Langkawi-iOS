@@ -8,20 +8,12 @@
 import UIKit
 import Combine
 
-class HomeViewController: BaseViewController, DialogPresenterSupport {
-    private lazy var vm = HomeViewModel(owner: self)
-    
-    var eventSubject: PassthroughSubject<DialogEvent, Never> = PassthroughSubject()
-    
-    var relatedUserCollectionViews: [RelatedUserCollectionView] = []
-    
+class HomeViewController: BaseViewController {
     private var containerView: UIView?
     
     override func viewDidLoad() {
         layoutNavigationBar()
         layout()
-        
-        vm.setup()
         super.viewDidLoad()
     }
     
@@ -34,8 +26,12 @@ class HomeViewController: BaseViewController, DialogPresenterSupport {
         let collectionViewHeight: CGFloat = 136
         let verticalMargin: CGFloat = 30
         
-        relatedUserCollectionViews = RelationPositionStatus.allCases.map { [weak self] in
-            RelatedUserCollectionView(owner: self, positionStatus: $0)
+        let viewControllers: [RelatedUsersViewController] = RelationPositionStatus.allCases.map { [weak self] in
+            let vc = RelatedUsersViewController()
+            vc.vm.positionStatus = $0
+            self?.addChild(vc)
+            vc.didMove(toParent: self)
+            return vc
         }
         
         let scrollView = UIScrollView()
@@ -60,21 +56,21 @@ class HomeViewController: BaseViewController, DialogPresenterSupport {
             container.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
             container.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             container.widthAnchor.constraint(equalTo: view.widthAnchor),
-            container.heightAnchor.constraint(equalToConstant: height * CGFloat(relatedUserCollectionViews.count))
+            container.heightAnchor.constraint(equalToConstant: height * CGFloat(viewControllers.count))
         ])
         
         self.containerView = container
         
         var anchor = container.topAnchor
-        relatedUserCollectionViews.forEach {
-            container.addSubviewForAutoLayout($0)
+        viewControllers.forEach {
+            container.addSubviewForAutoLayout($0.view)
             NSLayoutConstraint.activate([
-                $0.topAnchor.constraint(equalTo: anchor, constant: verticalMargin),
-                $0.leftAnchor.constraint(equalTo: container.leftAnchor),
-                $0.rightAnchor.constraint(equalTo: container.rightAnchor),
-                $0.heightAnchor.constraint(equalToConstant: collectionViewHeight)
+                $0.view.topAnchor.constraint(equalTo: anchor, constant: verticalMargin),
+                $0.view.leftAnchor.constraint(equalTo: container.leftAnchor),
+                $0.view.rightAnchor.constraint(equalTo: container.rightAnchor),
+                $0.view.heightAnchor.constraint(equalToConstant: collectionViewHeight)
             ])
-            anchor = $0.bottomAnchor
+            anchor = $0.view.bottomAnchor
         }
     }
 }

@@ -14,18 +14,6 @@ class LoginViewModel: SwinjectSupport {
     lazy var loginAPI = resolveInstance(LoginAPI.self)
     
     func loginCompletion(response: LoginResponse) {
-        let realm = try! Realm()
-        let kv = realm.objects(DBKeyValue.self).where { $0.key == DBKeys.apiToken }.first
-        if let kv = kv {
-            try! realm.write {
-                kv.value = response.token
-            }
-            return
-        }
-        
-        let newKv = DBKeyValue(key: DBKeys.apiToken, value: response.token)
-        try! realm.write {
-            realm.add(newKv)
-        }
+        LoginTokenManager.storeToken(token: response.token)
     }
 }

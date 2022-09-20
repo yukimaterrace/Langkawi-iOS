@@ -12,24 +12,22 @@ class FindViewModel: SwinjectSupport {
     private lazy var userApi = resolveInstance(UserAPI.self)
     private lazy var imageApi = resolveInstance(ImageAPI.self)
     
-    private weak var owner: (OwnerVC & DialogPresenterSupport)?
+    private weak var owner: OwnerVC?
     private let onFetchCompletion: () -> Void
     
     var cancellables: Set<AnyCancellable> = []
     
     private var users: [User] = []
     
-    init(owner: OwnerVC & DialogPresenterSupport, onFetchCompletion: @escaping () -> Void) {
+    init(owner: OwnerVC, onFetchCompletion: @escaping () -> Void) {
         self.owner = owner
         self.onFetchCompletion = onFetchCompletion
     }
     
     func setup() {
-        owner?.useDialogPresenterSupport { [weak self] _ in
-            guard let self = self else { return }
-            self.fetch(page: 0)?.store(in: &self.cancellables)
-        }
-        owner?.useEffect { [weak self] in
+        owner?.useEffect(dependencies: [
+            LoginTokenManager.loginTokenStored.eraseToAnyPublisher()
+        ]) { [weak self] in
             self?.fetch(page: 0)
         }
     }

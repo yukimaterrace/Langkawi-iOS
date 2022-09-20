@@ -19,14 +19,16 @@ class UseEffectSupportInjector: LifecycleInjector {
         self.effector = effector
     }
     
-    func onViewWillAppear() {
+    func onViewDidLoad() {
         sink()
+    }
+    
+    func onViewWillAppear() {
         cancellable = effector()
     }
     
     func onViewDidDisappear() {
         cancellable?.cancel()
-        cancellables.removeAll()
     }
     
     private func sink() {

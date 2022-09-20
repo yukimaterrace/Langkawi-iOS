@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-protocol APIHandler: UIViewController & SwinjectSupport {}
+protocol APIHandler: UIViewController {}
 
 extension APIHandler {
     
@@ -17,7 +17,6 @@ extension APIHandler {
         requester: () -> AnyPublisher<T, Error>?,
         handler: @escaping (T) -> Void
     ) -> AnyCancellable? {
-        let globalErrorHandler = self.resolveInstance(GlobalExceptionHandler.self)
         return requester()?
             .subscribe(on: DispatchQueue.global())
             .receive(on: DispatchQueue.main)
@@ -32,7 +31,7 @@ extension APIHandler {
                     }
                     
                     if cont {
-                        globalErrorHandler.handle(error: error, vc: self)
+                        GlobalErrorHandler.handle(error: error, vc: self)
                     }
                 }
             }, receiveValue: handler)

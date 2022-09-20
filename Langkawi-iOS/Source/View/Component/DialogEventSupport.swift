@@ -16,7 +16,7 @@ enum DialogEvent {
 
 class DialogPresenterSupportInjector: LifecycleInjector {
     private let handler: (DialogEvent) -> Void
-    private let eventSubject: PassthroughSubject<DialogEvent, Never>
+    private weak var eventSubject: PassthroughSubject<DialogEvent, Never>?
     private var cancellable: AnyCancellable?
     
     init(handler: @escaping (DialogEvent) -> Void, eventSubject: PassthroughSubject<DialogEvent, Never>) {
@@ -25,7 +25,7 @@ class DialogPresenterSupportInjector: LifecycleInjector {
     }
     
     func onViewDidLoad() {
-        cancellable = self.eventSubject.sink { [weak self] in
+        cancellable = self.eventSubject?.sink { [weak self] in
             self?.handler($0)
         }
     }
