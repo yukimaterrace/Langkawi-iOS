@@ -10,8 +10,7 @@ import UIKit
 
 class BaseViewController:
     LifecycleInjectableViewController,
-    SwinjectSupport,
     UseEffectSupport,
     APIHandler {}
 
-typealias OwnerVC = SwinjectSupport & UseEffectSupport & APIHandler
+typealias OwnerVC = UseEffectSupport & APIHandler

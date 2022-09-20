@@ -9,13 +9,11 @@ import Foundation
 import Alamofire
 import Combine
 
-class BaseAPI: SwinjectSupport {
+class BaseAPI {
     
     private let basePath = "http://localhost:3000"
     private lazy var apiPath = "\(basePath)/api"
     private lazy var imagePath = "\(basePath)/uploads"
-    
-    private lazy var globalExceptionHandler = resolveInstance(GlobalExceptionHandler.self)
     
     func getRequest<T: Decodable>(
         path: String,
