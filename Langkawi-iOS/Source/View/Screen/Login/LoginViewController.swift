@@ -9,9 +9,7 @@ import Foundation
 import UIKit
 import Combine
 
-class LoginViewController: BaseViewController, UITextFieldDelegate, DialogPresentedSupport {
-    internal var parentVC: DialogPresenterSupport?
-    
+class LoginViewController: BaseViewController, UITextFieldDelegate {
     private lazy var vm = LoginViewModel()
     
     private var emailTextField: UITextField?
@@ -115,7 +113,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, DialogPresen
             return vm.loginAPI.login(email: email, password: password)
         }) { [weak self] (response: LoginResponse) in
             self?.vm.loginCompletion(response: response)
-            self?.sendDialogEventAndDismiss(event: .ok)
+            self?.dismiss(animated: true)
         }
     }
 }
