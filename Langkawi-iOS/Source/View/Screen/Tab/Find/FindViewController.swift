@@ -10,7 +10,7 @@ import UIKit
 import Combine
 import Alamofire
 
-class FindViewController: BaseViewController, DialogPresenterSupport {
+class FindViewController: BaseViewController {
     private lazy var vm = FindViewModel(owner: self) { [weak self] in
         self?.collectionView?.reloadData()
     }
@@ -19,14 +19,11 @@ class FindViewController: BaseViewController, DialogPresenterSupport {
     
     private var collectionView: UICollectionView?
     
-    var eventSubject: PassthroughSubject<DialogEvent, Never> = PassthroughSubject()
-    
     override func viewDidLoad() {
         vm.setup()
-        
-        super.viewDidLoad()
         layoutNavigationBar()
         layout()
+        super.viewDidLoad()
     }
     
     private func layoutNavigationBar() {
