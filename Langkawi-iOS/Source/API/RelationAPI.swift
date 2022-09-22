@@ -51,7 +51,7 @@ class RelationAPIImpl: BaseAPI, RelationAPI {
         return putRequest(
             path: "/relations/\(userId)",
             model: RelationResponse.self,
-            parameters: ["status": status]
+            parameters: ["status": status.rawValue]
         )
     }
 }

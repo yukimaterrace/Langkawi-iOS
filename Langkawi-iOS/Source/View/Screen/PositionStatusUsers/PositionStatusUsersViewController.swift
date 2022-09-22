@@ -18,7 +18,7 @@ class PositionStatusUsersViewController: BaseViewController {
     
     private func layoutNavigationBar() {
         navigationItem.title = vm.positionStatus?.string()
-        layoutNavigationBarBorder()
+        navigationItem.backButtonTitle = LabelDef.back
     }
     
     private func layout() {

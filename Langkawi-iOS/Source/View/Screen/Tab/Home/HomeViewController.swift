@@ -19,6 +19,7 @@ class HomeViewController: BaseViewController {
     
     private func layoutNavigationBar() {
         navigationItem.title = LabelDef.home
+        navigationItem.backButtonTitle = LabelDef.back
         layoutNavigationBarBorder()
     }
     
