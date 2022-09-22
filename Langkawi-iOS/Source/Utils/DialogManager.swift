@@ -10,9 +10,18 @@ import UIKit
 
 class DialogManager {
     
-    static func showAlert(vc: UIViewController?, title: String?, message: String?) {
+    static func showAlert(
+        vc: UIViewController?,
+        title: String?,
+        message: String?,
+        ok: UIAlertAction = UIAlertAction(title: "OK", style: .default),
+        cancel: UIAlertAction? = nil
+    ) {
         let dialog = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        dialog.addAction(UIAlertAction(title: "OK", style: .default))
+        dialog.addAction(ok)
+        if let cancel = cancel {
+            dialog.addAction(cancel)
+        }
         vc?.present(dialog, animated: false, completion: nil)
     }
     

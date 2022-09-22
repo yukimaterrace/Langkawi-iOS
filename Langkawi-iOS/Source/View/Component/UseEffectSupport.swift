@@ -17,9 +17,6 @@ class UseEffectSupportInjector: LifecycleInjector {
     init(dependencies: [AnyPublisher<Bool, Never>], effector: @escaping () -> AnyCancellable?) {
         self.dependencies = dependencies
         self.effector = effector
-    }
-    
-    func onViewDidLoad() {
         sink()
     }
     
@@ -34,10 +31,8 @@ class UseEffectSupportInjector: LifecycleInjector {
     private func sink() {
         dependencies.forEach { dependency in
             dependency.sink { [weak self] in
-                guard let self = self, $0 else {
-                    return
-                }
-                self.cancellable = self.effector()
+                guard $0 else { return }
+                self?.cancellable = self?.effector()
             }.store(in: &cancellables)
         }
     }
