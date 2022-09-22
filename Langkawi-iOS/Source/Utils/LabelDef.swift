@@ -8,6 +8,10 @@
 import Foundation
 
 class LabelDef {
+    static let ok = "OK"
+    static let cancel = "キャンセル"
+    static let back = "戻る"
+    
     static let login = "ログイン"
     static let email = "メールアドレス"
     static let password = "パスワード"
@@ -27,6 +31,7 @@ class LabelDef {
     static let declined = "申込お断り"
     static let disconnected = "交際取下"
     static let refused = "交際拒否"
+    static let apply = "交際を申し込む"
     
     static let ageSuffix = "歳"
     static let dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"

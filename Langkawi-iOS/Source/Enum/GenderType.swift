@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum GenderType: String, Codable, CaseIterable {
     case male
@@ -17,6 +18,15 @@ enum GenderType: String, Codable, CaseIterable {
             return LabelDef.male
         case .female:
             return LabelDef.female
+        }
+    }
+    
+    func toColor() -> UIColor {
+        switch self {
+        case .male:
+            return .blue
+        case .female:
+            return .red
         }
     }
 }

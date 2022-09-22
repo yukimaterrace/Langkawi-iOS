@@ -50,7 +50,7 @@ class UserIntroductionCell: UserCell {
         }
         
         genderLabel.text = user.gender?.toLabel()
-        genderLabel.textColor = user.gender == .male ? .blue : .red
+        genderLabel.textColor = user.gender?.toColor()
         
         ageLabel.text = "\(user.age ?? 0)\(LabelDef.ageSuffix)"
         
