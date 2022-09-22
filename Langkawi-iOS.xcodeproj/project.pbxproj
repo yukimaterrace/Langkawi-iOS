@@ -10,6 +10,9 @@
 		0BED73361B9D646C72AEBA32 /* Pods_Langkawi_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC005C4FF07741F899D93DE /* Pods_Langkawi_iOS.framework */; };
 		22766530167464AAE58F52BC /* Pods_Langkawi_iOS_Langkawi_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DE3C9EB39E9A0854524CD91 /* Pods_Langkawi_iOS_Langkawi_iOSUITests.framework */; };
 		5EBB9657A979975C0394BBE7 /* Pods_Langkawi_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93921279D7228086E98E29B4 /* Pods_Langkawi_iOSTests.framework */; };
+		CB668E0928DA943800A512B7 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB668E0828DA943800A512B7 /* UserDetailViewController.swift */; };
+		CB668E0B28DA944500A512B7 /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB668E0A28DA944500A512B7 /* UserDetailViewModel.swift */; };
+		CB668E0D28DB159700A512B7 /* MessageDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB668E0C28DB159700A512B7 /* MessageDef.swift */; };
 		CBE8321128CC266300D8E953 /* Langkawi_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8321028CC266300D8E953 /* Langkawi_iOSTests.swift */; };
 		CBE8321B28CC266300D8E953 /* Langkawi_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8321A28CC266300D8E953 /* Langkawi_iOSUITests.swift */; };
 		CBE8321D28CC266300D8E953 /* Langkawi_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8321C28CC266300D8E953 /* Langkawi_iOSUITestsLaunchTests.swift */; };
@@ -146,6 +149,9 @@
 		9090AA68838BCBBB7673B2F7 /* Pods-Langkawi-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Langkawi-iOS.release.xcconfig"; path = "Target Support Files/Pods-Langkawi-iOS/Pods-Langkawi-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		93921279D7228086E98E29B4 /* Pods_Langkawi_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Langkawi_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB9A71686E070BDFB597501 /* Pods-Langkawi-iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Langkawi-iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Langkawi-iOSTests/Pods-Langkawi-iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CB668E0828DA943800A512B7 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		CB668E0A28DA944500A512B7 /* UserDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModel.swift; sourceTree = "<group>"; };
+		CB668E0C28DB159700A512B7 /* MessageDef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDef.swift; sourceTree = "<group>"; };
 		CBE831F628CC266300D8E953 /* Langkawi-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Langkawi-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE8320728CC266300D8E953 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBE8320C28CC266300D8E953 /* Langkawi-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Langkawi-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -255,6 +261,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		CB668E0028DA941B00A512B7 /* UserDetail */ = {
+			isa = PBXGroup;
+			children = (
+				CB668E0828DA943800A512B7 /* UserDetailViewController.swift */,
+				CB668E0A28DA944500A512B7 /* UserDetailViewModel.swift */,
+			);
+			path = UserDetail;
+			sourceTree = "<group>";
+		};
 		CBE831ED28CC266300D8E953 = {
 			isa = PBXGroup;
 			children = (
@@ -341,6 +356,7 @@
 				CBE8327728CC38BB00D8E953 /* FontSupport.swift */,
 				CBE8327828CC38BB00D8E953 /* LabelDef.swift */,
 				CBE832FB28D9424900D8E953 /* LoginTokenManager.swift */,
+				CB668E0C28DB159700A512B7 /* MessageDef.swift */,
 				CBE8327628CC38BB00D8E953 /* SwinjectManager.swift */,
 			);
 			path = Utils;
@@ -394,6 +410,7 @@
 				CBE8328428CC38BB00D8E953 /* Login */,
 				CBE8330228D9981400D8E953 /* PositionStatusUsers */,
 				CBE832C328D1584600D8E953 /* Tab */,
+				CB668E0028DA941B00A512B7 /* UserDetail */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -834,6 +851,7 @@
 			files = (
 				CBE832CD28D1747400D8E953 /* UsersResponse.swift in Sources */,
 				CBE832BF28CDAD1C00D8E953 /* APIHandler.swift in Sources */,
+				CB668E0928DA943800A512B7 /* UserDetailViewController.swift in Sources */,
 				CBE8330128D960E000D8E953 /* FindViewModel.swift in Sources */,
 				CBE8330628D9986300D8E953 /* PositionStatusUsersViewModel.swift in Sources */,
 				CBE8329928CC38BB00D8E953 /* AppDelegate.swift in Sources */,
@@ -882,7 +900,9 @@
 				CBE8328D28CC38BB00D8E953 /* DialogManager.swift in Sources */,
 				CBE832CB28D1735E00D8E953 /* UserAPI.swift in Sources */,
 				CBE832EC28D6994600D8E953 /* RelationResponse.swift in Sources */,
+				CB668E0D28DB159700A512B7 /* MessageDef.swift in Sources */,
 				CBE8329B28CC38BB00D8E953 /* GlobalErrorHandler.swift in Sources */,
+				CB668E0B28DA944500A512B7 /* UserDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
