@@ -19,7 +19,7 @@ class RelatedUsersViewController: BaseViewController {
         return UIAction(title: "lookUpMore") { [weak self] _ in
             let vc = PositionStatusUsersViewController()
             vc.vm.positionStatus = self?.vm.positionStatus
-            self?.navigationController?.pushViewController(vc, animated: true)
+            self?.navigationController?.pushViewController(vc, animated: false)
         }
     }
     
@@ -104,5 +104,11 @@ extension RelatedUsersViewController: UICollectionViewDelegateFlowLayout, UIColl
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = UserDetailViewController()
+        vc.vm.userId = vm.users[indexPath.item].id
+        navigationController?.pushViewController(vc, animated: false)
     }
 }

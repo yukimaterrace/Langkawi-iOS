@@ -77,6 +77,11 @@ class UsersViewController<T: UserCell>: BaseViewController,
         return UIEdgeInsets(top: 5, left: 5, bottom: 0, right: 5)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = UserDetailViewController()
+        vc.vm.userId = vm.resolveUser(index: indexPath.item)?.id
+        navigationController?.pushViewController(vc, animated: false)
+    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // TODO: fetch another page
