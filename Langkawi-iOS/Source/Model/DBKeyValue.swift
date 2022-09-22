@@ -9,6 +9,7 @@ import RealmSwift
 
 class DBKeys {
     static let apiToken = "apiToken"
+    static let loginUserId = "loginUserId"
 }
 
 class DBKeyValue: Object {
