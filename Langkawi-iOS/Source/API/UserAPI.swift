@@ -10,6 +10,8 @@ import Combine
 protocol UserAPI {
     
     func users(page: Int, pageSize: Int) -> AnyPublisher<UsersResponse, Error>
+    
+    func user(userId: Int) -> AnyPublisher<User, Error>
 }
 
 class UserAPIImpl: BaseAPI, UserAPI {
@@ -19,6 +21,13 @@ class UserAPIImpl: BaseAPI, UserAPI {
             path: "/users",
             model: UsersResponse.self,
             parameters: ["page": page, "page_size": pageSize]
+        )
+    }
+    
+    func user(userId: Int) -> AnyPublisher<User, Error> {
+        return getRequest(
+            path: "/users/\(userId)",
+            model: User.self
         )
     }
 }
