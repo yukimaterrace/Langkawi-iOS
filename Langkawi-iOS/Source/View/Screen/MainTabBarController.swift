@@ -31,7 +31,7 @@ class MainTabBarController: UITabBarController {
             selectedImage: findTabBarItemImage(color: .blue)
         )
         
-        let accountViewController = HomeViewController()
+        let accountViewController = UINavigationController(rootViewController: AccountViewController())
         accountViewController.tabBarItem = UITabBarItem(
             title: LabelDef.account,
             image: accountTabBarItemImage(color: .black),
