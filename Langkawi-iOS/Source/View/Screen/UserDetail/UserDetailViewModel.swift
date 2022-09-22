@@ -86,11 +86,11 @@ class UserDetailViewModel: SwinjectSupport {
                   let owner = self?.owner else {
                 return
             }
-            owner.nameLabel?.text = "\(user.lastName ?? "") \(user.firstName ?? "")"
+            owner.nameLabel?.text = user.toNameLabelText()
             owner.genderLabel?.text = user.gender?.toLabel()
             owner.genderLabel?.textColor = user.gender?.toColor()
-            owner.ageLabel?.text = "\(user.age ?? 0)\(LabelDef.ageSuffix)"
-            owner.descriptionLabel?.text = "\(user.detail?.descriptionA ?? "")"
+            owner.ageLabel?.text = user.toAgeLabelText()
+            owner.descriptionLabel?.text = user.detail?.descriptionA
         }.store(in: &cancellables)
         
         $avator.sink { [weak self] in

@@ -15,5 +15,6 @@ class LoginViewModel: SwinjectSupport {
     
     func loginCompletion(response: LoginResponse) {
         LoginTokenManager.storeToken(token: response.token)
+        LoginTokenManager.storeLoginUserId(userId: response.userId)
     }
 }

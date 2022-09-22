@@ -40,12 +40,10 @@ class UserNameCell: UserCell {
     }
     
     override func sinkUser(user: User) {
-        guard let nameLabel = nameLabel,
-              let firstName = user.firstName,
-              let lastName = user.lastName else {
+        guard let nameLabel = nameLabel else {
             return
         }
-        nameLabel.text = "\(lastName) \(firstName)"
+        nameLabel.text = user.toNameLabelText()
         nameLabel.bounds.size = nameLabel.intrinsicContentSize
     }
 }
