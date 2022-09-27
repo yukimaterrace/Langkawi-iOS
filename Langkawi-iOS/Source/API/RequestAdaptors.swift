@@ -31,3 +31,16 @@ class AuthorizationAdaptor: Adapter {
         super.init(handler)
     }
 }
+
+extension Dictionary where Key == String, Value == Any? {
+    
+    func compactParameters() -> Parameters {
+        var parameters: Parameters = [:]
+        self.forEach { kv in
+            if let value = kv.value {
+                parameters[kv.key] = value
+            }
+        }
+        return parameters
+    }
+}

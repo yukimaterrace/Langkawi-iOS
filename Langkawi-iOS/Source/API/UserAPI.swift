@@ -12,6 +12,8 @@ protocol UserAPI {
     func users(page: Int, pageSize: Int) -> AnyPublisher<UsersResponse, Error>
     
     func user(userId: Int) -> AnyPublisher<User, Error>
+    
+    func updateUser(userId: Int, firstName: String?, lastName: String?, age: Int?, gender: GenderType?) -> AnyPublisher<User, Error>
 }
 
 class UserAPIImpl: BaseAPI, UserAPI {
@@ -30,4 +32,13 @@ class UserAPIImpl: BaseAPI, UserAPI {
             model: User.self
         )
     }
+    
+    func updateUser(userId: Int, firstName: String?, lastName: String?, age: Int?, gender: GenderType?) -> AnyPublisher<User, Error> {
+        return putRequest(
+            path: "/users/\(userId)",
+            model: User.self,
+            parameters: ["first_name": firstName, "last_name": lastName, "age": age, "gender": gender?.rawValue].compactParameters()
+        )
+    }
+    
 }

@@ -8,6 +8,7 @@
 import Foundation
 
 class LabelDef {
+    static let submit = "設定"
     static let ok = "OK"
     static let cancel = "キャンセル"
     static let back = "戻る"
@@ -21,6 +22,11 @@ class LabelDef {
     static let male = "男性"
     static let female = "女性"
     static let lookUpMore = "もっと見る"
+    
+    static let firstName = "名"
+    static let lastName = "姓"
+    static let age = "年齢"
+    static let gender = "性別"
     
     static let fromMe = "あなたから"
     static let fromYou = "お相手から"
