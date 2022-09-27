@@ -120,7 +120,9 @@ class AccountViewController: BaseViewController {
             descriptionLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 40)
         ])
         
-        layoutEditButton(leftContainer: descriptionLabel, name: "pencil", type: .solid) { _ in }
+        layoutEditButton(leftContainer: descriptionLabel, name: "pencil", type: .solid) { [weak self] _ in
+            self?.navigationController?.pushViewController(DescriptionEditViewController(), animated: false)
+        }
     }
     
     private func layoutEditButton(leftContainer: UIView, name: String, type: FontAwesomeType, handler: @escaping UIActionHandler) {

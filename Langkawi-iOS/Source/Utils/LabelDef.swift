@@ -27,6 +27,7 @@ class LabelDef {
     static let lastName = "姓"
     static let age = "年齢"
     static let gender = "性別"
+    static let selfDescriotion = "自己紹介"
     
     static let fromMe = "あなたから"
     static let fromYou = "お相手から"

@@ -20,6 +20,10 @@
 		CB668E1A28E278F800A512B7 /* PickerViewDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB668E1928E278F800A512B7 /* PickerViewDialog.swift */; };
 		CB668E1C28E27E9200A512B7 /* AgePickerViewDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB668E1B28E27E9200A512B7 /* AgePickerViewDialog.swift */; };
 		CB668E1E28E283EF00A512B7 /* GenderPickerViewDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB668E1D28E283EF00A512B7 /* GenderPickerViewDialog.swift */; };
+		CB668E2028E2D6F100A512B7 /* DescriptionEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB668E1F28E2D6F100A512B7 /* DescriptionEditViewController.swift */; };
+		CB668E2228E2D75600A512B7 /* DescriptionEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB668E2128E2D75600A512B7 /* DescriptionEditViewModel.swift */; };
+		CB668E2428E2D9B000A512B7 /* UserDetailAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB668E2328E2D9B000A512B7 /* UserDetailAPI.swift */; };
+		CB668E2628E2DC0D00A512B7 /* ProjectStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB668E2528E2DC0D00A512B7 /* ProjectStyles.swift */; };
 		CBE8321128CC266300D8E953 /* Langkawi_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8321028CC266300D8E953 /* Langkawi_iOSTests.swift */; };
 		CBE8321B28CC266300D8E953 /* Langkawi_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8321A28CC266300D8E953 /* Langkawi_iOSUITests.swift */; };
 		CBE8321D28CC266300D8E953 /* Langkawi_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8321C28CC266300D8E953 /* Langkawi_iOSUITestsLaunchTests.swift */; };
@@ -166,6 +170,10 @@
 		CB668E1928E278F800A512B7 /* PickerViewDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewDialog.swift; sourceTree = "<group>"; };
 		CB668E1B28E27E9200A512B7 /* AgePickerViewDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgePickerViewDialog.swift; sourceTree = "<group>"; };
 		CB668E1D28E283EF00A512B7 /* GenderPickerViewDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderPickerViewDialog.swift; sourceTree = "<group>"; };
+		CB668E1F28E2D6F100A512B7 /* DescriptionEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionEditViewController.swift; sourceTree = "<group>"; };
+		CB668E2128E2D75600A512B7 /* DescriptionEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionEditViewModel.swift; sourceTree = "<group>"; };
+		CB668E2328E2D9B000A512B7 /* UserDetailAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailAPI.swift; sourceTree = "<group>"; };
+		CB668E2528E2DC0D00A512B7 /* ProjectStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectStyles.swift; sourceTree = "<group>"; };
 		CBE831F628CC266300D8E953 /* Langkawi-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Langkawi-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE8320728CC266300D8E953 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBE8320C28CC266300D8E953 /* Langkawi-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Langkawi-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -297,6 +305,8 @@
 		CB668E1328E26D0600A512B7 /* Edit */ = {
 			isa = PBXGroup;
 			children = (
+				CB668E1F28E2D6F100A512B7 /* DescriptionEditViewController.swift */,
+				CB668E2128E2D75600A512B7 /* DescriptionEditViewModel.swift */,
 				CB668E1428E26DD700A512B7 /* NameEditViewController.swift */,
 				CB668E1628E26DE400A512B7 /* NameEditViewModel.swift */,
 			);
@@ -437,6 +447,7 @@
 				CBE832E328D31A1500D8E953 /* BaseViewController.swift */,
 				CBE832DD28D2FE7F00D8E953 /* DialogEventSupport.swift */,
 				CBE832E128D3191A00D8E953 /* LifecycleInjector.swift */,
+				CB668E2528E2DC0D00A512B7 /* ProjectStyles.swift */,
 				CBE8328128CC38BB00D8E953 /* ProjectTextField.swift */,
 				CBE8328028CC38BB00D8E953 /* UISupport.swift */,
 				CBE832E528D321B300D8E953 /* UseEffectSupport.swift */,
@@ -478,6 +489,7 @@
 				CBE832F728D6B55F00D8E953 /* RelationAPI.swift */,
 				CBE832B828CD78C500D8E953 /* RequestAdaptors.swift */,
 				CBE832CA28D1735E00D8E953 /* UserAPI.swift */,
+				CB668E2328E2D9B000A512B7 /* UserDetailAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -901,6 +913,7 @@
 				CBE8330628D9986300D8E953 /* PositionStatusUsersViewModel.swift in Sources */,
 				CBE8329928CC38BB00D8E953 /* AppDelegate.swift in Sources */,
 				CBE832FC28D9424900D8E953 /* LoginTokenManager.swift in Sources */,
+				CB668E2628E2DC0D00A512B7 /* ProjectStyles.swift in Sources */,
 				CBE832EE28D699B000D8E953 /* RelationsResponse.swift in Sources */,
 				CBE832C128CEA47300D8E953 /* MainTabBarController.swift in Sources */,
 				CBE8329228CC38BB00D8E953 /* ErrorResponse.swift in Sources */,
@@ -915,8 +928,10 @@
 				CBE832D428D1A2FF00D8E953 /* User.swift in Sources */,
 				CBE832C628D158BE00D8E953 /* UsersViewController.swift in Sources */,
 				CBE832C928D1625500D8E953 /* UserCell.swift in Sources */,
+				CB668E2028E2D6F100A512B7 /* DescriptionEditViewController.swift in Sources */,
 				CB668E1728E26DE400A512B7 /* NameEditViewModel.swift in Sources */,
 				CBE8328F28CC38BB00D8E953 /* FontSupport.swift in Sources */,
+				CB668E2228E2D75600A512B7 /* DescriptionEditViewModel.swift in Sources */,
 				CBE832BB28CDA64900D8E953 /* LoginResponse.swift in Sources */,
 				CBE8330428D9983700D8E953 /* PositionStatusUsersViewController.swift in Sources */,
 				CBE832DC28D2AA5F00D8E953 /* ImageAPI.swift in Sources */,
@@ -950,6 +965,7 @@
 				CBE8328D28CC38BB00D8E953 /* DialogManager.swift in Sources */,
 				CB668E1228DC548F00A512B7 /* AccountViewModel.swift in Sources */,
 				CBE832CB28D1735E00D8E953 /* UserAPI.swift in Sources */,
+				CB668E2428E2D9B000A512B7 /* UserDetailAPI.swift in Sources */,
 				CBE832EC28D6994600D8E953 /* RelationResponse.swift in Sources */,
 				CB668E0D28DB159700A512B7 /* MessageDef.swift in Sources */,
 				CBE8329B28CC38BB00D8E953 /* GlobalErrorHandler.swift in Sources */,
