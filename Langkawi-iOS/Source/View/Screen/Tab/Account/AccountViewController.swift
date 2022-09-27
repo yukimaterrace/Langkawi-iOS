@@ -97,7 +97,9 @@ class AccountViewController: BaseViewController {
         nameAreaStack.addArrangedSubview(genderLabel)
         nameAreaStack.addArrangedSubview(ageLabel)
         
-        layoutEditButton(leftContainer: nameArea, name: "pen-to-square", type: .solid) { _ in }
+        layoutEditButton(leftContainer: nameArea, name: "pen-to-square", type: .solid) { [weak self] _ in
+            self?.navigationController?.pushViewController(NameEditViewController(), animated: false)
+        }
     }
     
     private func layoutDescriptionArea() {

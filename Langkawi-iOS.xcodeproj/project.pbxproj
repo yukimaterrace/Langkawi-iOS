@@ -15,6 +15,11 @@
 		CB668E0D28DB159700A512B7 /* MessageDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB668E0C28DB159700A512B7 /* MessageDef.swift */; };
 		CB668E1028DC526000A512B7 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB668E0F28DC526000A512B7 /* AccountViewController.swift */; };
 		CB668E1228DC548F00A512B7 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB668E1128DC548F00A512B7 /* AccountViewModel.swift */; };
+		CB668E1528E26DD700A512B7 /* NameEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB668E1428E26DD700A512B7 /* NameEditViewController.swift */; };
+		CB668E1728E26DE400A512B7 /* NameEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB668E1628E26DE400A512B7 /* NameEditViewModel.swift */; };
+		CB668E1A28E278F800A512B7 /* PickerViewDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB668E1928E278F800A512B7 /* PickerViewDialog.swift */; };
+		CB668E1C28E27E9200A512B7 /* AgePickerViewDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB668E1B28E27E9200A512B7 /* AgePickerViewDialog.swift */; };
+		CB668E1E28E283EF00A512B7 /* GenderPickerViewDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB668E1D28E283EF00A512B7 /* GenderPickerViewDialog.swift */; };
 		CBE8321128CC266300D8E953 /* Langkawi_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8321028CC266300D8E953 /* Langkawi_iOSTests.swift */; };
 		CBE8321B28CC266300D8E953 /* Langkawi_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8321A28CC266300D8E953 /* Langkawi_iOSUITests.swift */; };
 		CBE8321D28CC266300D8E953 /* Langkawi_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8321C28CC266300D8E953 /* Langkawi_iOSUITestsLaunchTests.swift */; };
@@ -156,6 +161,11 @@
 		CB668E0C28DB159700A512B7 /* MessageDef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDef.swift; sourceTree = "<group>"; };
 		CB668E0F28DC526000A512B7 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		CB668E1128DC548F00A512B7 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		CB668E1428E26DD700A512B7 /* NameEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameEditViewController.swift; sourceTree = "<group>"; };
+		CB668E1628E26DE400A512B7 /* NameEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameEditViewModel.swift; sourceTree = "<group>"; };
+		CB668E1928E278F800A512B7 /* PickerViewDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewDialog.swift; sourceTree = "<group>"; };
+		CB668E1B28E27E9200A512B7 /* AgePickerViewDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgePickerViewDialog.swift; sourceTree = "<group>"; };
+		CB668E1D28E283EF00A512B7 /* GenderPickerViewDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderPickerViewDialog.swift; sourceTree = "<group>"; };
 		CBE831F628CC266300D8E953 /* Langkawi-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Langkawi-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE8320728CC266300D8E953 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBE8320C28CC266300D8E953 /* Langkawi-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Langkawi-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -279,8 +289,28 @@
 			children = (
 				CB668E0F28DC526000A512B7 /* AccountViewController.swift */,
 				CB668E1128DC548F00A512B7 /* AccountViewModel.swift */,
+				CB668E1328E26D0600A512B7 /* Edit */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		CB668E1328E26D0600A512B7 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				CB668E1428E26DD700A512B7 /* NameEditViewController.swift */,
+				CB668E1628E26DE400A512B7 /* NameEditViewModel.swift */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		CB668E1828E2778800A512B7 /* Dialog */ = {
+			isa = PBXGroup;
+			children = (
+				CB668E1B28E27E9200A512B7 /* AgePickerViewDialog.swift */,
+				CB668E1D28E283EF00A512B7 /* GenderPickerViewDialog.swift */,
+				CB668E1928E278F800A512B7 /* PickerViewDialog.swift */,
+			);
+			path = Dialog;
 			sourceTree = "<group>";
 		};
 		CBE831ED28CC266300D8E953 = {
@@ -412,6 +442,7 @@
 				CBE832E528D321B300D8E953 /* UseEffectSupport.swift */,
 				CBE832C728D1623800D8E953 /* Cell */,
 				CBE832FD28D9554500D8E953 /* Collection */,
+				CB668E1828E2778800A512B7 /* Dialog */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -879,10 +910,12 @@
 				CBE832E228D3191A00D8E953 /* LifecycleInjector.swift in Sources */,
 				CBE8329028CC38BB00D8E953 /* LabelDef.swift in Sources */,
 				CBE832F028D69F2C00D8E953 /* UserIntroductionCell.swift in Sources */,
+				CB668E1528E26DD700A512B7 /* NameEditViewController.swift in Sources */,
 				CBE832F628D6A58600D8E953 /* RelatedUsersViewModel.swift in Sources */,
 				CBE832D428D1A2FF00D8E953 /* User.swift in Sources */,
 				CBE832C628D158BE00D8E953 /* UsersViewController.swift in Sources */,
 				CBE832C928D1625500D8E953 /* UserCell.swift in Sources */,
+				CB668E1728E26DE400A512B7 /* NameEditViewModel.swift in Sources */,
 				CBE8328F28CC38BB00D8E953 /* FontSupport.swift in Sources */,
 				CBE832BB28CDA64900D8E953 /* LoginResponse.swift in Sources */,
 				CBE8330428D9983700D8E953 /* PositionStatusUsersViewController.swift in Sources */,
@@ -903,6 +936,8 @@
 				CBE8329828CC38BB00D8E953 /* BaseAPI.swift in Sources */,
 				CBE8329628CC38BB00D8E953 /* HomeViewController.swift in Sources */,
 				CBE832B528CC86F600D8E953 /* DBKeyValue.swift in Sources */,
+				CB668E1E28E283EF00A512B7 /* GenderPickerViewDialog.swift in Sources */,
+				CB668E1A28E278F800A512B7 /* PickerViewDialog.swift in Sources */,
 				CBE832FF28D955AB00D8E953 /* FindViewController.swift in Sources */,
 				CBE8329328CC38BB00D8E953 /* SuccessResponse.swift in Sources */,
 				CBE832B928CD78C500D8E953 /* RequestAdaptors.swift in Sources */,
@@ -918,6 +953,7 @@
 				CBE832EC28D6994600D8E953 /* RelationResponse.swift in Sources */,
 				CB668E0D28DB159700A512B7 /* MessageDef.swift in Sources */,
 				CBE8329B28CC38BB00D8E953 /* GlobalErrorHandler.swift in Sources */,
+				CB668E1C28E27E9200A512B7 /* AgePickerViewDialog.swift in Sources */,
 				CB668E0B28DA944500A512B7 /* UserDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

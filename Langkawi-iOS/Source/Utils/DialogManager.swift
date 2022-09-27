@@ -25,7 +25,8 @@ class DialogManager {
         vc?.present(dialog, animated: false, completion: nil)
     }
     
-    static func showDialog(presenter: UIViewController?, vc: UIViewController) {
+    static func showDialog(presenter: UIViewController?, vc: UIViewController, style: UIModalPresentationStyle = .fullScreen) {
+        vc.modalPresentationStyle = style
         if let presenter = presenter as? DialogPresenterSupport {
             presenter.presentDialog(vc: vc, animated: true)
         } else {
