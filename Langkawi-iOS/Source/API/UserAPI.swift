@@ -40,5 +40,4 @@ class UserAPIImpl: BaseAPI, UserAPI {
             parameters: ["first_name": firstName, "last_name": lastName, "age": age, "gender": gender?.rawValue].compactParameters()
         )
     }
-    
 }
