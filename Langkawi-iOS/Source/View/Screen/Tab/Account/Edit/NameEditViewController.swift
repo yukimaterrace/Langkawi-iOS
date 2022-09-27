@@ -83,18 +83,11 @@ class NameEditViewController: BaseViewController, DialogPresenterSupport {
             margin: 20
         )
         
-        let submitButton = UIButton()
-        submitButton.layer.cornerRadius = 20
-        submitButton.backgroundColor = .green
-        submitButton.setAttributedTitle(
-            NSAttributedString(string: LabelDef.submit, attributes: [.font: UIFont.systemFont(ofSize: 16, weight: .bold)]),
-            for: .normal
-        )
-        submitButton.addAction(UIAction { [weak self] _ in
+        let submitButton = ProjectStyles.primaryButton(title: LabelDef.submit, action: UIAction { [weak self] _ in
             self?.vm.submit {
                 self?.navigationController?.popViewController(animated: true)
             }
-        }, for: .touchUpInside)
+        })
         
         view.addSubviewForAutoLayout(submitButton)
         NSLayoutConstraint.activate([
