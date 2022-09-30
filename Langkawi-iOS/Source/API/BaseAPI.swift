@@ -101,6 +101,7 @@ class BaseAPI {
                     
                     let df = DateFormatter()
                     df.dateFormat = LabelDef.dateFormat
+                    df.timeZone = .init(identifier: "UTC")
                     
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase

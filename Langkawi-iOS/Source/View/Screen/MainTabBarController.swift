@@ -31,6 +31,13 @@ class MainTabBarController: UITabBarController {
             selectedImage: findTabBarItemImage(color: .blue)
         )
         
+        let talkRoomViewController = UINavigationController(rootViewController: TalkRoomViewController())
+        talkRoomViewController.tabBarItem = UITabBarItem(
+            title: LabelDef.talkRoom,
+            image: talkRoomTabBarItemImage(color: .black),
+            selectedImage: talkRoomTabBarItemImage(color: .blue)
+        )
+        
         let accountViewController = UINavigationController(rootViewController: AccountViewController())
         accountViewController.tabBarItem = UITabBarItem(
             title: LabelDef.account,
@@ -41,6 +48,7 @@ class MainTabBarController: UITabBarController {
         viewControllers = [
             homeViewController,
             findViewController,
+            talkRoomViewController,
             accountViewController
         ]
     }
@@ -72,6 +80,10 @@ class MainTabBarController: UITabBarController {
     
     private func findTabBarItemImage(color: UIColor) -> UIImage? {
         return tabBarItemImage(name: "magnifying-glass", color: color)
+    }
+    
+    private func talkRoomTabBarItemImage(color: UIColor) -> UIImage? {
+        return tabBarItemImage(name: "comments", color: color)
     }
     
     private func accountTabBarItemImage(color: UIColor) -> UIImage? {

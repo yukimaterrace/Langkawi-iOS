@@ -19,6 +19,7 @@ class SwinjectManager {
         container.register(ImageAPI.self) { _ in ImageAPIImpl() }
         container.register(RelationAPI.self) { _ in RelationAPIImpl() }
         container.register(UserDetailAPI.self) { _ in UserDetailAPIImpl() }
+        container.register(TalkAPI.self) { _ in TalkAPIImpl() }
     }
 }
 

@@ -40,6 +40,8 @@ class LabelDef {
     static let refused = "交際拒否"
     static let apply = "交際を申し込む"
     
+    static let talkRoom = "トークルーム"
+    
     static let ageSuffix = "歳"
     static let dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 }
