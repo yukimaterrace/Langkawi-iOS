@@ -19,13 +19,3 @@ struct User: Codable {
     let createdAt: Date
     let updatedAt: Date
 }
-
-extension User {
-    func toNameLabelText() -> String {
-        return "\(self.lastName ?? "") \(self.firstName ?? "")"
-    }
-    
-    func toAgeLabelText() -> String {
-        return "\(self.age ?? 0)\(LabelDef.ageSuffix)"
-    }
-}
